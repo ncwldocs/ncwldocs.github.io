@@ -3,25 +3,20 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://WreakHavocOnTheMiddleClass.github.io',
+	base: 'ncwl-docs',
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: {
-				github: 'https://github.com/withastro/starlight',
-			},
+			title: 'NCWL Docs',
 			sidebar: [
 				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
-				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
+					label: 'Shipyard',
+					autogenerate: { directory: 'shipyard' },
 				},
 			],
+			components: {
+				MarkdownContent: './src/components/MarkdownContent.astro',
+			}
 		}),
 	],
 });

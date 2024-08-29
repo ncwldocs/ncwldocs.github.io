@@ -1,0 +1,27 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/MarkdownContent.astro';
+
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+
+const { title } = Astro.props.entry.data;
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/shipyard/*.{jpeg,jpg,png,gif}');
+
+console.log(Astro.props);
+
+const isShipyard = Astro.url.pathname.includes('shipyard');
+
+let imagePath = '';
+
+if(isShipyard) {
+    imagePath = "/src/assets/shipyard/" + title + ".png";
+    // console.log(imagePath);
+    if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "/src/assets/shipyard/*.{jpeg,jpg,png,gif}"`);
+}
+
+---
+{isShipyard && <Image src={images[imagePath]()} alt={title} />}
+<Default {...Astro.props}><slot /></Default>
