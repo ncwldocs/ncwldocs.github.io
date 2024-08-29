@@ -16,7 +16,8 @@ export default defineConfig({
 			],
 			components: {
 				MarkdownContent: './src/components/MarkdownContent.astro',
-			}
+			},
+			customCss: ['./src/styles/custom.css']
 		}),
 	],
 });
