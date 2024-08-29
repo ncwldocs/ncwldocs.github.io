@@ -23,5 +23,16 @@ if(isShipyard) {
 }
 
 ---
-{isShipyard && <Image src={images[imagePath]()} alt={title} />}
+
+{isShipyard && <Image 
+    src={images[imagePath]()} 
+    alt={title}
+    class="ship-image"/>}
 <Default {...Astro.props}><slot /></Default>
+
+<style>
+    .ship-image {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
