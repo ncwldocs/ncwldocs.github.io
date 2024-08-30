@@ -3,28 +3,41 @@ title: Termite
 tableOfContents: false
 ---
 import TechLevel from '../../../../components/TechLevel.astro'
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-> *An ultra-frugal, ultra-light mining pod. Comes with the base, skeleton necessities for spaceflight and EVA. The rock bottom of rock bottom.*
+<Tabs>
 
-<details>
-<summary>Armaments</summary>
-* N/A
-</details>
+  <TabItem label="Info" icon="information">
 
-<details>
-<summary>Modules</summary>
-* N/A
-</details>
+    > *An ultra-frugal, ultra-light mining pod. Comes with the base, skeleton necessities for spaceflight and EVA. The rock bottom of rock bottom.*
 
-<details>
-<summary>Techlevel</summary>
-> <TechLevel tech='Civilian' />
-</details>
+    <details>
+      <summary>Armaments</summary>
+      * N/A
+    </details>
 
-<details>
-<summary>Changelog</summary>
-* 08/18/2024
-    * Addresses a bug with the Termite shuttle where Contractors who tried to spawn on one would spawn in Kal Surezai's Adjutant office instead.
-* 08/17/2024
-    * Fixes spawnbug on the Termite.
-</details>
+    <details>
+      <summary>Modules</summary>
+      * N/A
+    </details>
+
+    <details>
+      <summary>Techlevel</summary>
+      > <TechLevel tech='Civilian' />
+    </details>
+
+    <details>
+      <summary>Changelog</summary>
+      * 08/18/2024
+        * Addresses a bug with the Termite shuttle where Contractors who tried to spawn on one would spawn in Kal Surezai's Adjutant office instead.
+      * 08/17/2024
+        * Fixes spawnbug on the Termite.
+    </details>
+
+  </TabItem>
+
+  <TabItem label="Guide" icon="open-book">
+    TBD.
+  </TabItem>
+
+</Tabs>

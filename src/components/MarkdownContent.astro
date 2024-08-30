@@ -10,15 +10,12 @@ const { title } = Astro.props.entry.data;
 
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/shipyard/*.{jpeg,jpg,png,gif}');
 
-console.log(Astro.props);
-
 const isShipyard = Astro.url.pathname.includes('shipyard');
 
 let imagePath = '';
 
 if(isShipyard) {
     imagePath = "/src/assets/shipyard/" + title + ".png";
-    // console.log(imagePath);
     if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "/src/assets/shipyard/*.{jpeg,jpg,png,gif}"`);
 }
 

@@ -3,26 +3,39 @@ title: Mercury
 tableOfContents: false
 ---
 import TechLevel from '../../../../components/TechLevel.astro'
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-> *A civilian techmining shuttle, the Mercury exists with only one purpose in mind; to excavate survey data from wrecks and process them in its onboard research computer. Equipped with production facilities to boot, the Mercury is the ideal ship for beginner pilots who want to get a foothold in the techmining industry, especially with the shuttle's low price in mind.*
+<Tabs>
 
-<details>
-<summary>Armaments</summary>
-* N/A
-</details>
+  <TabItem label="Info" icon="information">
 
-<details>
-<summary>Modules</summary>
-* N/A
-</details>
+    > *A civilian techmining shuttle, the Mercury exists with only one purpose in mind; to excavate survey data from wrecks and process them in its onboard research computer. Equipped with production facilities to boot, the Mercury is the ideal ship for beginner pilots who want to get a foothold in the techmining industry, especially with the shuttle's low price in mind.*
 
-<details>
-<summary>Techlevel</summary>
-> <TechLevel tech='Civilian' />
-</details>
+    <details>
+      <summary>Armaments</summary>
+      * N/A
+    </details>
 
-<details>
-<summary>Changelog</summary>
-* 08/26/2024
-    * Fixes the Mercury having the SHI research servers.
-</details>
+    <details>
+      <summary>Modules</summary>
+      * N/A
+    </details>
+
+    <details>
+      <summary>Techlevel</summary>
+      > <TechLevel tech='Civilian' />
+    </details>
+
+    <details>
+      <summary>Changelog</summary>
+      * 08/26/2024
+        * Fixes the Mercury having the SHI research servers.
+    </details>
+
+  </TabItem>
+
+  <TabItem label="Guide" icon="open-book">
+    TBD.
+  </TabItem>
+
+</Tabs>
