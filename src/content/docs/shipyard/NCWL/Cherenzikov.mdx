@@ -3,32 +3,44 @@ title: Cherenzikov
 tableOfContents: false
 ---
 import TechLevel from '../../../../components/TechLevel.astro'
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-> *A robust civilian-military conversion, the Cherenzikov is a cheap, low-tech adaptation of an existing miner-freighter model belonging to Ihikerja Civilian Manufacturing. Used primarily as a heavy patrol corvette, its ease of manufacture and low material cost renders it an effective choice for aspiring Unionkapitans looking to make a name for themselves.*
+<Tabs>
 
-<details>
-<summary>Armaments</summary>
-* 1x SHI .50 slugthrower hardpoint
-* 3x 23mm gatling autoturret
-* 1x 'Swarmer' 38mm autorocket pod
-* 5x 'Gran Sudaruska' point defense light machine gun
-</details>
+  <TabItem label="Info" icon="information">
 
-<details>
-<summary>Modules</summary>
-* Module A: Fire Slugthrower
-* Module B: Toggle Slugthrower Safeties On
-* Module C: Toggle Slugthrower Safeties Off
-* Module D: Arm Turrets
-* Module E: Disarm Turrets
-</details>
+    > *A robust civilian-military conversion, the Cherenzikov is a cheap, low-tech adaptation of an existing miner-freighter model belonging to Ihikerja Civilian Manufacturing. Used primarily as a heavy patrol corvette, its ease of manufacture and low material cost renders it an effective choice for aspiring Unionkapitans looking to make a name for themselves.*
 
-<details>
-<summary>Techlevel</summary>
-> <TechLevel tech='Scrap' />
-</details>
+    <details>
+    <summary>Armaments</summary>
+    * 1x SHI .50 slugthrower hardpoint
+    * 3x 23mm gatling autoturret
+    * 1x 'Swarmer' 38mm autorocket pod
+    * 5x 'Gran Sudaruska' point defense light machine gun
+    </details>
 
-<details>
-<summary>Changelog</summary>
-None.
-</details>
+    <details>
+    <summary>Modules</summary>
+    * Module A: Fire Slugthrower
+    * Module B: Toggle Slugthrower Safeties On
+    * Module C: Toggle Slugthrower Safeties Off
+    * Module D: Arm Turrets
+    * Module E: Disarm Turrets
+    </details>
+
+    <details>
+    <summary>Techlevel</summary>
+    > <TechLevel tech='Scrap' />
+    </details>
+
+    <details>
+    <summary>Changelog</summary>
+    None.
+    </details>
+  </TabItem>
+
+  <TabItem label="Guide" icon="open-book">
+    TBD.
+  </TabItem>
+
+</Tabs>

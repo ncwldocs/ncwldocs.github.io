@@ -3,30 +3,43 @@ title: Vanguard
 tableOfContents: false
 ---
 import TechLevel from '../../../../components/TechLevel.astro'
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-> *A light communard gunship with dual slugthrowers - often used as escort vessels for larger battleships.*
+<Tabs>
 
-<details>
-<summary>Armaments</summary>
-* 2x SHI Slugthrowers
-</details>
+  <TabItem label="Info" icon="information">
 
-<details>
-<summary>Modules</summary>
-* Module A: Reinforce Bridge 
-* Module B: Open Slugthrower Boltholes 
-* Module C: Fire Slugthrowers 
-* Module D: Slugthrower Safeties On 
-* Module E: Slugthrower Safeties Off
-</details>
+    > *A light communard gunship with dual slugthrowers - often used as escort vessels for larger battleships.*
 
-<details>
-<summary>Techlevel</summary>
-> <TechLevel tech='Lowtech' />
-</details>
+    <details>
+      <summary>Armaments</summary>
+      * 2x SHI Slugthrowers
+    </details>
 
-<details>
-<summary>Changelog</summary>
-* 08/20/2024
-    * Fixes poor wiring in the Vanguard Mk. II
-</details>
+    <details>
+      <summary>Modules</summary>
+      * Module A: Reinforce Bridge 
+      * Module B: Open Slugthrower Boltholes 
+      * Module C: Fire Slugthrowers 
+      * Module D: Slugthrower Safeties On 
+      * Module E: Slugthrower Safeties Off
+    </details>
+
+    <details>
+      <summary>Techlevel</summary>
+      > <TechLevel tech='Lowtech' />
+    </details>
+
+    <details>
+      <summary>Changelog</summary>
+      * 08/20/2024
+          * Fixes poor wiring in the Vanguard Mk. II
+    </details>
+
+  </TabItem>
+
+  <TabItem label="Guide" icon="open-book">
+    TBD.
+  </TabItem>
+
+</Tabs>

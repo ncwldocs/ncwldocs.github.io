@@ -2,33 +2,46 @@
 title: Bogatyr
 tableOfContents: false
 ---
-import TechLevel from '../../../../components/TechLevel.astro'
+import TechLevel from '../../../../components/TechLevel.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-> *An outdated Imperial scouting gunship converted into a stealth bomber - the Bogatyr invests heavily into ballistics; with two SHI slugthrowers and four missile racks. Implemented with a fortified 'combat' mode and IFF cloaker, the Bogatyr sees frequent use in many communard naval operations today.*
+<Tabs>
 
-<details>
-<summary>Armaments</summary>
-* Hardpoint
-    * 2x SHI Slugthrower 
-    * 2x NT Sumitomo Missile Rack
-</details>
+  <TabItem label="Info" icon="information">
 
-<details>
-<summary>Modules</summary>
-* Module A: Fire Slugthrowers 
-* Module B: Slugthrower Safeties 
-* Module C: Toggle Missile Boltholes 
-* Module D: Fire Missiles 
-* Module E: Reinforce Bridge
-</details>
+    > *An outdated Imperial scouting gunship converted into a stealth bomber - the Bogatyr invests heavily into ballistics; with two SHI slugthrowers and four missile racks. Implemented with a fortified 'combat' mode and IFF cloaker, the Bogatyr sees frequent use in many communard naval operations today.*
 
-<details>
-<summary>Techlevel</summary>
-> <TechLevel tech='Hightech' />
-</details>
+    <details>
+      <summary>Armaments</summary>
+      * Hardpoint
+        * 2x SHI Slugthrower 
+        * 2x NT Sumitomo Missile Rack
+    </details>
 
-<details>
-<summary>Changelog</summary>
-* 08/25/2024
-    * Gives a radio muffler to the NCWL Bogatyr.
-</details>
+    <details>
+      <summary>Modules</summary>
+      * Module A: Fire Slugthrowers 
+      * Module B: Slugthrower Safeties 
+      * Module C: Toggle Missile Boltholes 
+      * Module D: Fire Missiles 
+      * Module E: Reinforce Bridge
+    </details>
+
+    <details>
+      <summary>Techlevel</summary>
+      > <TechLevel tech='Hightech' />
+    </details>
+
+    <details>
+      <summary>Changelog</summary>
+      * 08/25/2024
+      * Gives a radio muffler to the NCWL Bogatyr.
+    </details>
+  </TabItem>
+
+  <TabItem label="Guide" icon="open-book">
+    TBD.
+  </TabItem>
+
+</Tabs>
+

@@ -3,30 +3,43 @@ title: Khopesh
 tableOfContents: false
 ---
 import TechLevel from '../../../../components/TechLevel.astro'
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-> *An interdiction ultralight strikeshuttle - comes with non-explosive, high rate of fire Vulcan turrets.*
+<Tabs>
 
-<details>
-<summary>Armaments</summary>
-* Hardpoint
-    * 2x Vulcan gatlings
-</details>
+  <TabItem label="Info" icon="information">
 
-<details>
-<summary>Modules</summary>
-* Module A: Fire Vulcans 
-* Module B: Vulcan Safeties On 
-* Module C: Vulcan Safeties Off 
-* Module D: BLANK 
-* Module E: BLANK
-</details>
+    > *An interdiction ultralight strikeshuttle - comes with non-explosive, high rate of fire Vulcan turrets.*
 
-<details>
-<summary>Techlevel</summary>
-> <TechLevel tech='Midtech' />
-</details>
+    <details>
+    <summary>Armaments</summary>
+    * Hardpoint
+        * 2x Vulcan gatlings
+    </details>
 
-<details>
-<summary>Changelog</summary>
-None.
-</details>
+    <details>
+    <summary>Modules</summary>
+    * Module A: Fire Vulcans 
+    * Module B: Vulcan Safeties On 
+    * Module C: Vulcan Safeties Off 
+    * Module D: BLANK 
+    * Module E: BLANK
+    </details>
+
+    <details>
+    <summary>Techlevel</summary>
+    > <TechLevel tech='Midtech' />
+    </details>
+
+    <details>
+    <summary>Changelog</summary>
+    None.
+    </details>
+
+  </TabItem>
+
+  <TabItem label="Guide" icon="open-book">
+    TBD.
+  </TabItem>
+
+</Tabs>
