@@ -12,7 +12,16 @@ export default defineConfig({
 				"introductory-guide",
 				{
 					label: 'Shipyard',
-					autogenerate: { directory: 'shipyard' },
+					items: [
+						{
+							label: "NCWL",
+							autogenerate: { directory: 'shipyard/NCWL' },
+						},
+						{
+							label: "Civilian",
+							autogenerate: { directory: 'shipyard/Civilian' },
+						}
+					]
 				},
 			],
 			components: {

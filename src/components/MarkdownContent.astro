@@ -8,15 +8,15 @@ import { Image } from 'astro:assets';
 
 const { title } = Astro.props.entry.data;
 
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/shipyard/*.{jpeg,jpg,png,gif}');
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/shipyard/*.{jpeg,jpg,png,gif}');
 
 const isShipyard = Astro.url.pathname.includes('shipyard');
 
 let imagePath = '';
 
 if(isShipyard) {
-    imagePath = "/src/assets/shipyard/" + title + ".png";
-    if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "/src/assets/shipyard/*.{jpeg,jpg,png,gif}"`);
+    imagePath = "/src/assets/images/shipyard/" + title + ".png";
+    if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "/src/assets/images/shipyard/*.{jpeg,jpg,png,gif}"`);
 }
 
 ---
