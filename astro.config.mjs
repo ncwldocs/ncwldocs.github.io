@@ -9,10 +9,22 @@ export default defineConfig({
 		starlight({
 			title: 'NCWL Docs',
 			sidebar: [
-				"introductory-guide",
+				{
+					label: "Guides",
+					autogenerate: { directory: 'guides' },
+				},
 				{
 					label: 'Shipyard',
-					autogenerate: { directory: 'shipyard' },
+					items: [
+						{
+							label: "NCWL",
+							autogenerate: { directory: 'shipyard/NCWL' },
+						},
+						{
+							label: "Civilian",
+							autogenerate: { directory: 'shipyard/Civilian' },
+						}
+					]
 				},
 			],
 			components: {
