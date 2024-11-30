@@ -34,7 +34,10 @@ export default defineConfig({
 			components: {
 				MarkdownContent: './src/components/MarkdownContent.astro',
 			},
-			customCss: ['./src/styles/custom.css']
+			customCss: ['./src/styles/custom.css'],
+			editLink: {
+				baseUrl: 'https://github.com/WreakHavocOnTheMiddleClass/ncwl-docs/edit/main/',
+			},
 		}),
 	],
 });
