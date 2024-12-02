@@ -4,6 +4,7 @@ tableOfContents: false
 ---
 import TechLevel from '../../../../components/TechLevel.astro'
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import ShipCost from '@components/ShipCost.astro';
 
 <Tabs>
 
@@ -31,9 +32,8 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
     </details>
 
     <details>
-      <summary>Changelog</summary>
-      * 08/18/2024
-        * Re-does the Paracelsus so it's not shit.
+      <summary>Manufacturing Cost</summary>
+      <ShipCost shipName={frontmatter.title} />
     </details>
 
   </TabItem>

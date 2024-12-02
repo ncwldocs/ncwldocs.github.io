@@ -4,10 +4,15 @@ tableOfContents: false
 ---
 import TechLevel from '../../../../components/TechLevel.astro'
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import ShipCost from '@components/ShipCost.astro';
 
 <Tabs>
 
   <TabItem label="Info" icon="information">
+
+  :::danger[Removed]
+  This ship was removed from the game and is listed here for reference only.
+  :::
 
   > *An ultralight laser platform developed as a cost-effective, quick-response solution to the anti-piracy campaign. A subshuttle of the NCWL Zhipov strikeshuttle carrier.*
 
@@ -28,11 +33,6 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
   <details>
     <summary>Techlevel</summary>
     > <TechLevel tech='Midtech' />
-  </details>
-
-  <details>
-    <summary>Changelog</summary>
-    None.
   </details>
 
   </TabItem>

@@ -4,6 +4,7 @@ tableOfContents: false
 ---
 import TechLevel from '../../../../components/TechLevel.astro'
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import ShipCost from '@components/ShipCost.astro';
 
 <Tabs>
 
@@ -27,13 +28,13 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
     </details>
 
     <details>
-    <summary>Techlevel</summary>
-    > <TechLevel tech='Midtech' />
+      <summary>Techlevel</summary>
+      > <TechLevel tech='Midtech' />
     </details>
 
     <details>
-    <summary>Changelog</summary>
-    None.
+      <summary>Manufacturing Cost</summary>
+      <ShipCost shipName={frontmatter.title} />
     </details>
 
   </TabItem>

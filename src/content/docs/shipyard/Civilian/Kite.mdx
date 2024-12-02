@@ -4,6 +4,7 @@ tableOfContents: false
 ---
 import TechLevel from '../../../../components/TechLevel.astro'
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import ShipCost from '@components/ShipCost.astro';
 
 <Tabs>
 
@@ -24,13 +25,6 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
     <details>
       <summary>Techlevel</summary>
       > <TechLevel tech='Civilian' />
-    </details>
-
-    <details>
-      <summary>Changelog</summary>
-      * 08/26/2024
-        * Fixes the Kite not being configured to fire its weapons.
-        * Fixes the Kite not being configured to take expeditions.
     </details>
 
   </TabItem>

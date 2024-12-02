@@ -1,0 +1,70 @@
+---
+import fs from 'fs'
+import YAML from 'yaml'
+
+const { shipName } = Astro.props;
+
+const YAMLFolder = './src/assets/data/Hullrot-YAML-Prototypes'
+
+const recipeLPCsFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Recipes/Lathes/shiplpcs.yml`, 'utf8');
+const recipeShipComponentsFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Recipes/Lathes/shipcomponents.yml`, 'utf8');
+
+const recipeLPCs = YAML.parse(recipeLPCsFile);
+const recipeShipComponents = YAML.parse(recipeShipComponentsFile);
+
+const shipLPCEntry = recipeLPCs.find(ship => ship.id.includes(shipName));
+
+const costLPC = {};
+
+const costLPCMaterials = {
+    Steel: 0,
+    Silver: 0,
+    Gold: 0,
+    Plasma: 0
+}
+
+Object.keys(shipLPCEntry.materials).forEach(key => {
+    costLPC[key] = shipLPCEntry.materials[key] / 100;
+})
+
+const shipEngineEntry = recipeShipComponents.find(component => component.id.includes("Engine"));
+const shipElectronicsEntry = recipeShipComponents.find(component => component.id.includes("Electronics"));
+const shipHullEntry = recipeShipComponents.find(component => component.id.includes("Hull"));
+
+Object.keys(shipEngineEntry.materials).forEach(key => {
+    costLPCMaterials[key] += (shipEngineEntry.materials[key] * costLPC.StarshipEngineComponents) / 100;
+    // console.log(key);
+})
+
+Object.keys(shipElectronicsEntry.materials).forEach(key => {
+    costLPCMaterials[key] += (shipElectronicsEntry.materials[key] * costLPC.ShipComponents) / 100;
+})
+
+Object.keys(shipHullEntry.materials).forEach(key => {
+    costLPCMaterials[key] += (shipHullEntry.materials[key] * costLPC.ShipHull) / 100;
+})
+
+console.log(`
+  ##########
+  ## TEST ##
+  ##########
+`);
+console.log("  MATERIALS COST OF: " + shipName)
+console.log(costLPCMaterials);
+console.log("");
+
+
+---
+<ul>
+    <li><strong>Engine Components</strong>: {costLPC.StarshipEngineComponents}</li>
+    <li><strong>Electronics Components</strong>: {costLPC.ShipComponents}</li>
+    <li><strong>Hull Components</strong>: {costLPC.ShipHull}</li>
+    <li><strong>Total Materials: </strong>
+        <ul>
+            <li>Steel: {costLPCMaterials.Steel}</li>
+            <li>Silver: {costLPCMaterials.Silver}</li>
+            <li>Gold: {costLPCMaterials.Gold}</li>
+            <li>Plasma: {costLPCMaterials.Plasma}</li>
+        </ul>
+    </li>
+</ul>
