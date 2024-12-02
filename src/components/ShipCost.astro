@@ -4,10 +4,17 @@ import YAML from 'yaml'
 
 const { shipName } = Astro.props;
 
+const YAMLFolder = './src/assets/data/Hullrot-YAML-Prototypes';
+
+const recipeLPCsFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Recipes/Lathes/shiplpcs.yml`, 'utf8');
+const recipeShipComponentsFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Recipes/Lathes/shipcomponents.yml`, 'utf8');
+
+/*
 const YAMLFolder = './src/assets/data/'
 
 const recipeLPCsFile = fs.readFileSync(`${YAMLFolder}/shiplpcs.yml`, 'utf8');
 const recipeShipComponentsFile = fs.readFileSync(`${YAMLFolder}/shipcomponents.yml`, 'utf8');
+*/
 
 const recipeLPCs = YAML.parse(recipeLPCsFile);
 const recipeShipComponents = YAML.parse(recipeShipComponentsFile);
