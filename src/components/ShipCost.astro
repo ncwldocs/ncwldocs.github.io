@@ -44,16 +44,6 @@ Object.keys(shipHullEntry.materials).forEach(key => {
     costLPCMaterials[key] += (shipHullEntry.materials[key] * costLPC.ShipHull) / 100;
 })
 
-console.log(`
-  ##########
-  ## TEST ##
-  ##########
-`);
-console.log("  MATERIALS COST OF: " + shipName)
-console.log(costLPCMaterials);
-console.log("");
-
-
 ---
 <ul>
     <li><strong>Engine Components</strong>: {costLPC.StarshipEngineComponents}</li>
