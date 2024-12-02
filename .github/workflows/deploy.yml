@@ -20,6 +20,10 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+      - name: Pull submodules
+        run: | 
+          git pull --recurse-submodules
+          git submodule update --remote --recursive
       - name: Install, build, and upload your site
         uses: withastro/action@v2
         # with:
