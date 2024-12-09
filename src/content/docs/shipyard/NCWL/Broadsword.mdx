@@ -1,46 +1,37 @@
 ---
 title: Broadsword
-tableOfContents: false
 ---
-import TechLevel from '../../../../components/TechLevel.astro'
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import TechLevel from '@components/TechLevel.astro'
 import ShipCost from '@components/ShipCost.astro';
 
-<Tabs>
 
-  <TabItem label="Info" icon="information">
+> *An ultralight bomber strikeshuttle developed as a cost-effective, quick-response solution to the anti-piracy campaign. A subshuttle of the NCWL Zhipov strikeshuttle carrier.*
 
-    > *An ultralight bomber strikeshuttle developed as a cost-effective, quick-response solution to the anti-piracy campaign. A subshuttle of the NCWL Zhipov strikeshuttle carrier.*
 
-    <details>
-    <summary>Armaments</summary>
-    * Hardpoint
-        * 2x Kurosawa rocket pod
-    </details>
+## Armaments
 
-    <details>
-    <summary>Modules</summary>
-    * Module A: Fire Rockets 
-    * Module B: Blank
-    * Module C: Blank
-    * Module D: Blank 
-    * Module E: Blank
-    </details>
+* Hardpoint
+  * 2x Kurosawa rocket pod
 
-    <details>
-      <summary>Techlevel</summary>
-      > <TechLevel tech='Midtech' />
-    </details>
+## Modules
 
-    <details>
-      <summary>Manufacturing Cost</summary>
-      <ShipCost shipName={frontmatter.title} />
-    </details>
+* Module A: Fire Rockets 
+* Module B: Blank
+* Module C: Blank
+* Module D: Blank 
+* Module E: Blank
 
-  </TabItem>
 
-  <TabItem label="Guide" icon="open-book">
-    TBD.
-  </TabItem>
+## Notes
 
-</Tabs>
+Should be used only for bombing runs against large or slow-moving targets. No defensive capabilities against other ultralights. Escort it with a fighter or keep it very close to its carrier.
+
+
+## Manufacturing Cost
+
+<ShipCost shipName={frontmatter.title} />
+
+
+## Techlevel
+
+* <TechLevel tech='Midtech' />

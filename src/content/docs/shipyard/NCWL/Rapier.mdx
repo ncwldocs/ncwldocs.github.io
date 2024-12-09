@@ -1,51 +1,36 @@
 ---
 title: Rapier
-tableOfContents: false
 ---
-import TechLevel from '../../../../components/TechLevel.astro'
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import TechLevel from '@components/TechLevel.astro'
 import ShipCost from '@components/ShipCost.astro';
 
-<Tabs>
 
-  <TabItem label="Info" icon="information">
+> *Originally a Wasp-class Imperial mining pod, the Rapier has gotten a second lease on life with thruster overclocking, a brand-new engine block, and two heatseeking torpedoes to replace its mining beam lasers. Used primarily in harassment raids and precision strikes, the Rapier doesn't tend to survive for long on its own.*
 
-    > *Originally a Wasp-class Imperial mining pod, the Rapier has gotten a second lease on life with thruster overclocking, a brand-new engine block, and two heatseeking torpedoes to replace its mining beam lasers. Used primarily in harassment raids and precision strikes, the Rapier doesn't tend to survive for long on its own.*
 
-    <details>
-      <summary>Armaments</summary>
-      * 2x SHI 180mm 'Idna' light torpedo pods
-    </details>
+## Armaments
 
-    <details>
-      <summary>Modules</summary>
-      * Module A: Fire Torpedoes 
-      * Module B: Blank 
-      * Module C: Blank 
-      * Module D: Blank 
-      * Module E: Blank
-    </details>
+* 2x SHI 180mm 'Idna' light torpedo pods
 
-    <details>
-      <summary>Techlevel</summary>
-      > <TechLevel tech='Lowtech' />
-    </details>
+## Modules
 
-    <details>
-      <summary>Manufacturing Cost</summary>
-      <ShipCost shipName={frontmatter.title} />
-    </details>
+* Module A: Fire Torpedoes 
+* Module B: Blank 
+* Module C: Blank 
+* Module D: Blank 
+* Module E: Blank
 
-  </TabItem>
 
-  <TabItem label="Guide" icon="open-book">
-    ## Pre-Flight Checklist
+## Notes
 
-    1. Set generator output to the minimum level to keep all systems powered, to conserve fuel.
-    
-    ## Usage Notes
+Should be used only for bombing runs against large or slow-moving targets. No defensive capabilities against other ultralights. Escort it with a fighter or keep it very close to its carrier.
 
-    Should be used only for bombing runs against large or slow-moving targets. No defensive capabilities against other ultralights. Escort it with a fighter or keep it very close to its carrier.
-  </TabItem>
 
-</Tabs>
+## Manufacturing Cost
+
+<ShipCost shipName={frontmatter.title} />
+
+
+## Techlevel
+
+* <TechLevel tech='Lowtech' />

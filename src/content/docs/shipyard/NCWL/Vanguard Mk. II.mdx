@@ -1,63 +1,39 @@
 ---
 title: Vanguard Mk. II
-tableOfContents: false
 ---
-import TechLevel from '../../../../components/TechLevel.astro'
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import TechLevel from '@components/TechLevel.astro'
 import ShipCost from '@components/ShipCost.astro';
 
-<Tabs>
 
-  <TabItem label="Info" icon="information">
+> *An improvement on the otherwise sluggish and underarmed Vanguard gunboat, the Vanguard Mk. II is a fresher design to come out of the Union's conceptual labs. Ripping the bridge out and relocating it in the engine room, the Vanguard gains extra space for a torpedo bay, while its outdated slugthrowers are replaced with more modern Vulcans. The upgraded powergrid has enough room left over for a light machine gun turret at the tail and a gyroscope with a new electronics refit, allowing for better combat performance.*
 
-    > *An improvement on the otherwise sluggish and underarmed Vanguard gunboat, the Vanguard Mk. II is a fresher design to come out of the Union's conceptual labs. Ripping the bridge out and relocating it in the engine room, the Vanguard gains extra space for a torpedo bay, while its outdated slugthrowers are replaced with more modern Vulcans. The upgraded powergrid has enough room left over for a light machine gun turret at the tail and a gyroscope with a new electronics refit, allowing for better combat performance.*
 
-    <details>
-      <summary>Armaments</summary>
-      * 2x NT 20mm 'Vulcan' gatling 
-      * 1x SHI 180mm 'Idna' light torpedo pod 
-      * 1x 'Gran Sudaruska' point defense light machine gun
-    </details>
+## Armaments
 
-    <details>
-      <summary>Modules</summary>
-      * Module A: Fire Gatlings 
-      * Module B: Fire Torpedo 
-      * Module C: Open weapon boltholes 
-      * Module D: Gatling safeties on 
-      * Module E: Gatling safeties off
-    </details>
+* 2x NT 20mm 'Vulcan' gatling 
+* 1x SHI 180mm 'Idna' light torpedo pod 
+* 1x 'Gran Sudaruska' point defense light machine gun
 
-    <details>
-      <summary>Techlevel</summary>
-      > <TechLevel tech='Midtech' />
-    </details>
 
-    <details>
-      <summary>Manufacturing Cost</summary>
-      <ShipCost shipName="VanguardTwo" />
-    </details>
+## Modules
 
-  </TabItem>
+* Module A: Fire Gatlings 
+* Module B: Fire Torpedo 
+* Module C: Open weapon boltholes 
+* Module D: Gatling safeties on 
+* Module E: Gatling safeties off
 
-  <TabItem label="Guide" icon="open-book">
 
-    #### Weaponry
-  
-    - NT 20mm 'Vulcan' gatlings
-      - Focus on disabling enemy turrets, hardpoints, and other critical systems to soften the target before moving in for the kill.
-    - SHI 180mm 'Idna' light torpedo pod
-      - The torpedo's tracking system will arm after traveling 50 meters. Once armed, the torpedo will detect the first enemy within a 180-degree cone of vision up to 750 meters away. Upon locking onto a target, the torpedo will home in with high precision. Idna torpedos are capable of penetrating and destroying even the most resilient hull plating.
-  
-    #### Engagement
-  
-    - Primary Targets
-      - Prioritize ships with exposed or poorly defended areas. Focus on disabling enemy turrets and hardpoints to neutralize their threat. Once critical systems are disabled, switch to targeting vulnerable hull sections or exposed crew members to maximize damage and finish the job.
-    - Initial Attack: \>750m
-      - Begin by firing on the general area you intend to destroy. Try to align your shots with critical systems, concentrating fire on the most vital areas. If critical systems aren't obvious, slightly rotate your ship from side to side to spread your shots across a wide area and disable external fixtures such as thrusters and turrets.
-    - Torpedo Strike: \<750m
-      - Once within roughly 750m, release the Idna torpedoes to deliver the final blow. After launching the torpedoes, quickly disengage and prepare for strafing runs against other targets if any remain.
+## Notes
 
-  </TabItem>
+The Vulcan gatlings are less capable of penetrating hull than the original Vanguard's slugthrowers, but can be useful for disabling external components and turrets. The torpedoes, on the other hand, will inflict severe damage upon impact and come with limited target-seeking capabilities. Quickly disengage after launching your torpedoes to give yourself time to re-arm and prepare for another strafing run.
 
-</Tabs>
+
+## Manufacturing Cost
+
+<ShipCost shipName="VanguardTwo" />
+
+
+## Techlevel
+
+* <TechLevel tech='Midtech' />

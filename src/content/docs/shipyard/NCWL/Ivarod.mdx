@@ -1,51 +1,39 @@
 ---
 title: Ivarod
-tableOfContents: false
 ---
-import TechLevel from '../../../../components/TechLevel.astro'
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import TechLevel from '@components/TechLevel.astro'
 import ShipCost from '@components/ShipCost.astro';
 
-<Tabs>
 
-  <TabItem label="Info" icon="information">
+> *A steady mining barge converted into an overdriven light destroyer, the Ivarod's mining depth charges were ripped out in favor of the tried-and-tested Type-99 artillery hardpoints. Welded-on external gun mounts further allow for more offensive and defensive capability, with a steady spread of low-caliber point defense near the back and destructive rocket pods and autoguns near the front. Outfitted for long-term deployments, the Ivarod excels at sideliner and escort duty, assisting larger allies within a fleet, although it struggles on its own against larger targets.*
 
-    > *A steady mining barge converted into an overdriven light destroyer, the Ivarod's mining depth charges were ripped out in favor of the tried-and-tested Type-99 artillery hardpoints. Welded-on external gun mounts further allow for more offensive and defensive capability, with a steady spread of low-caliber point defense near the back and destructive rocket pods and autoguns near the front. Outfitted for long-term deployments, the Ivarod excels at sideliner and escort duty, assisting larger allies within a fleet, although it struggles on its own against larger targets.*
 
-    <details>
-    <summary>Armaments</summary>
-    * 2x SHI Type-99 artillery hardpoint 
-    * 6x 'Gran Sudaruska' point defense light machine gun 
-    * 6x 60mm 'Needler' heavy precision autogun 
-    * 2x 'Swarmer' 38mm autorocket pod
-    </details>
+## Armaments
 
-    <details>
-    <summary>Modules</summary>
-    * Module A: Fire Artillery 
-    * Module B: Toggle Artillery Safeties On 
-    * Module C: Toggle Artillery Safeties Off 
-    * Module D: Disarm Turrets 
-    * Module E: Rearm Turrets
-    </details>
+* 2x SHI Type-99 artillery hardpoint 
+* 6x 'Gran Sudaruska' point defense light machine gun 
+* 6x 60mm 'Needler' heavy precision autogun 
+* 2x 'Swarmer' 38mm autorocket pod
 
-    <details>
-    <summary>Techlevel</summary>
-    > <TechLevel tech='Lowtech' />
-    </details>
 
-    <details>
-      <summary>Manufacturing Cost</summary>
-      <ShipCost shipName={frontmatter.title} />
-    </details>
+## Modules
+* Module A: Fire Artillery 
+* Module B: Toggle Artillery Safeties On 
+* Module C: Toggle Artillery Safeties Off 
+* Module D: Disarm Turrets 
+* Module E: Rearm Turrets
 
-  </TabItem>
 
-  <TabItem label="Guide" icon="open-book">
-    ## Usage Notes
+## Notes
 
-    Capable of operating as a well-armed logistics vessel or an artillery ship. The Type-99 cannons are effective at long ranges and the point-defense turrets will dissuade enemy fighters.
+Capable of operating as a well-armed logistics vessel or an artillery ship. The Type-99 cannons are effective at long ranges and the point-defense turrets will dissuade enemy fighters.
 
-  </TabItem>
 
-</Tabs>
+## Manufacturing Cost
+
+<ShipCost shipName={frontmatter.title} />
+
+
+## Techlevel
+
+* <TechLevel tech='Lowtech' />

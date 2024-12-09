@@ -1,45 +1,35 @@
 ---
 title: Paracelsus
-tableOfContents: false
 ---
-import TechLevel from '../../../../components/TechLevel.astro'
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import TechLevel from '@components/TechLevel.astro'
 import ShipCost from '@components/ShipCost.astro';
 
-<Tabs>
 
-  <TabItem label="Info" icon="information">
+> *Outfitted for search and rescue operations, the ICM Paracelsus is a classic amidst aspiring medical pilots. With its own crew monitoring console and robust medical stock at an affordable price, it makes a good entry level vessel for captains who want to start their medical career.*
 
-    > *Outfitted for search and rescue operations, the ICM Paracelsus is a classic amidst aspiring medical pilots. With its own crew monitoring console and robust medical stock at an affordable price, it makes a good entry level vessel for captains who want to start their medical career.*
 
-    <details>
-      <summary>Armaments</summary>
-      * 2x plasma bolt repeater
-    </details>
+## Armaments
 
-    <details>
-      <summary>Modules</summary>
-      * Module A: Fire Plasmacasters 
-      * Module B: Blank 
-      * Module C: Blank 
-      * Module D: Blank 
-      * Module E: Blank
-    </details>
+* 2x plasma bolt repeater
 
-    <details>
-      <summary>Techlevel</summary>
-      > <TechLevel tech='Midtech' />
-    </details>
 
-    <details>
-      <summary>Manufacturing Cost</summary>
-      <ShipCost shipName={frontmatter.title} />
-    </details>
+## Modules
 
-  </TabItem>
+* Module A: Fire Plasmacasters 
+* Module B: Blank 
+* Module C: Blank 
+* Module D: Blank 
+* Module E: Blank
 
-  <TabItem label="Guide" icon="open-book">
-    TBD.
-  </TabItem>
 
-</Tabs>
+## Notes
+
+TBD.
+
+
+## Manufacturing Cost
+<ShipCost shipName={frontmatter.title} />
+
+
+## Techlevel
+* <TechLevel tech='Midtech' />

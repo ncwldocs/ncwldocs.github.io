@@ -1,47 +1,38 @@
 ---
 title: Cherenzikov
-tableOfContents: false
 ---
-import TechLevel from '../../../../components/TechLevel.astro';
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import TechLevel from '@components/TechLevel.astro';
 import ShipCost from '@components/ShipCost.astro';
 
-<Tabs>
 
-  <TabItem label="Info" icon="information">
+> *A robust civilian-military conversion, the Cherenzikov is a cheap, low-tech adaptation of an existing miner-freighter model belonging to Ihikerja Civilian Manufacturing. Used primarily as a heavy patrol corvette, its ease of manufacture and low material cost renders it an effective choice for aspiring Unionkapitans looking to make a name for themselves.*
 
-    > *A robust civilian-military conversion, the Cherenzikov is a cheap, low-tech adaptation of an existing miner-freighter model belonging to Ihikerja Civilian Manufacturing. Used primarily as a heavy patrol corvette, its ease of manufacture and low material cost renders it an effective choice for aspiring Unionkapitans looking to make a name for themselves.*
 
-    <details>
-    <summary>Armaments</summary>
-    * 1x SHI .50 slugthrower hardpoint
-    * 3x 23mm gatling autoturret
-    * 1x 'Swarmer' 38mm autorocket pod
-    * 5x 'Gran Sudaruska' point defense light machine gun
-    </details>
+## Armaments
+* 1x SHI .50 slugthrower hardpoint
+* 3x 23mm gatling autoturret
+* 1x 'Swarmer' 38mm autorocket pod
+* 5x 'Gran Sudaruska' point defense light machine gun
 
-    <details>
-    <summary>Modules</summary>
-    * Module A: Fire Slugthrower
-    * Module B: Toggle Slugthrower Safeties On
-    * Module C: Toggle Slugthrower Safeties Off
-    * Module D: Arm Turrets
-    * Module E: Disarm Turrets
-    </details>
 
-    <details>
-      <summary>Techlevel</summary>
-      > <TechLevel tech='Scrap' />
-    </details>
+## Modules
+* Module A: Fire Slugthrower
+* Module B: Toggle Slugthrower Safeties On
+* Module C: Toggle Slugthrower Safeties Off
+* Module D: Arm Turrets
+* Module E: Disarm Turrets
 
-    <details>
-      <summary>Manufacturing Cost</summary>
-      <ShipCost shipName={frontmatter.title} />
-    </details>
-  </TabItem>
 
-  <TabItem label="Guide" icon="open-book">
-    TBD.
-  </TabItem>
+## Notes
 
-</Tabs>
+Primarily intended as an armed mining or trading vessel. Contains suits, small arms, and mining equipment for three miners. In combat, rotate clockwise to face the Cherenzikov's well-armed left side toward the enemy.
+
+
+## Manufacturing Cost
+
+<ShipCost shipName={frontmatter.title} />
+
+
+## Techlevel
+
+* <TechLevel tech='Scrap' />

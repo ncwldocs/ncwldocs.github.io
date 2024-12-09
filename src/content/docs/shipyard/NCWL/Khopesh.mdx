@@ -1,57 +1,38 @@
 ---
 title: Khopesh
-tableOfContents: false
 ---
-import TechLevel from '../../../../components/TechLevel.astro'
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import TechLevel from '@components/TechLevel.astro'
 import ShipCost from '@components/ShipCost.astro';
 
-<Tabs>
 
-  <TabItem label="Info" icon="information">
+> *An interdiction ultralight strikeshuttle - comes with non-explosive, high rate of fire Vulcan turrets.*
 
-    > *An interdiction ultralight strikeshuttle - comes with non-explosive, high rate of fire Vulcan turrets.*
 
-    <details>
-    <summary>Armaments</summary>
-    * Hardpoint
-        * 2x Vulcan gatlings
-    </details>
+## Armaments
 
-    <details>
-    <summary>Modules</summary>
-    * Module A: Fire Vulcans 
-    * Module B: Vulcan Safeties On 
-    * Module C: Vulcan Safeties Off 
-    * Module D: BLANK 
-    * Module E: BLANK
-    </details>
+* Hardpoint
+  * 2x Vulcan gatlings
 
-    <details>
-    <summary>Techlevel</summary>
-    > <TechLevel tech='Midtech' />
-    </details>
 
-    <details>
-      <summary>Manufacturing Cost</summary>
-      <ShipCost shipName={frontmatter.title} />
-    </details>
+## Modules
 
-  </TabItem>
+* Module A: Fire Vulcans 
+* Module B: Vulcan Safeties On 
+* Module C: Vulcan Safeties Off 
+* Module D: BLANK 
+* Module E: BLANK
 
-  <TabItem label="Guide" icon="open-book">
-    ## Pre-Flight Checklist
 
-    1. Set generator output to the minimum level to keep all systems powered, to conserve fuel.
-    
-    ## Refitting Options
+## Notes
 
-    - Move the shuttle console to the rear-center of the ship and fill the empty space with walls.
-    - Link the left and right vulcans to Module D and E respectively, allowing you to fire each gun individually to conserve ammo.
+Primarily useful against other ultralights or very lightly-armed ships. Low survivability.
 
-    ## Usage Notes
 
-    Primarily useful against other ultralights or very lightly-armed ships. Low survivability.
-  </TabItem>
+## Manufacturing Cost
 
-</Tabs>
+<ShipCost shipName={frontmatter.title} />
+
+
+## Techlevel
+
+* <TechLevel tech='Midtech' />

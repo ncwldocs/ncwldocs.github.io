@@ -1,40 +1,31 @@
 ---
 title: Exhumer
-tableOfContents: false
 ---
-import TechLevel from '../../../../components/TechLevel.astro'
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import TechLevel from '@components/TechLevel.astro'
 import ShipCost from '@components/ShipCost.astro';
 
-<Tabs>
 
-  <TabItem label="Info" icon="information">
+> *Produced primarily by Ihijerka Civilian Manufacturing, the Exhumer is an entry-level mining corvette seen commonly throughout the frontier. Intended for medium-term asteroid excavation assignments, it comes equipped with a duo of laser mining turrets.*
 
-    > *Produced primarily by Ihijerka Civilian Manufacturing, the Exhumer is an entry-level mining corvette seen commonly throughout the frontier. Intended for medium-term asteroid excavation assignments, it comes equipped with a duo of laser mining turrets.*
 
-    <details>
-      <summary>Armaments</summary>
-      * 2x Exhumer mining pulser
-    </details>
+## Armaments
+* 2x Exhumer mining pulser
 
-    <details>
-      <summary>Modules</summary>
-      * ???
-    </details>
 
-    <details>
-      <summary>Techlevel</summary>
-      > <TechLevel tech='Midtech' />
-    </details>
+## Modules
+* ???
 
-    <details>
-      <summary>Manufacturing Cost</summary>
-      <ShipCost shipName={frontmatter.title} />
-    </details>
-  </TabItem>
 
-  <TabItem label="Guide" icon="open-book">
-    TBD.
-  </TabItem>
+## Notes
 
-</Tabs>
+TBD.
+
+
+## Manufacturing Cost
+
+<ShipCost shipName={frontmatter.title} />
+
+
+## Techlevel
+
+* <TechLevel tech='Midtech' />

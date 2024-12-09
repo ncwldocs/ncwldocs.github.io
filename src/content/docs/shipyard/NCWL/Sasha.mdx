@@ -1,50 +1,42 @@
 ---
 title: Sasha
-tableOfContents: false
 ---
-import TechLevel from '../../../../components/TechLevel.astro';
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import TechLevel from '@components/TechLevel.astro';
 import ShipCost from '@components/ShipCost.astro';
 
-<Tabs>
 
-  <TabItem label="Info" icon="information">
+> *A converted assault cruiser, the Sasha is an experimental hull design first used as armed haulers in Chengridz, and later on as self-sufficient long-distance patrol vessels in Taypan. Although lacking in armor, the Sasha more than makes up for her thin skin with both destructive broadside cannons, and front-facing slugthrowers and artilleries. Comes with an expansive cargo hold and industrial modules, as well as an experimental FTL drive capable of planetary landings.*
 
-    > *A converted assault cruiser, the Sasha is an experimental hull design first used as armed haulers in Chengridz, and later on as self-sufficient long-distance patrol vessels in Taypan. Although lacking in armor, the Sasha more than makes up for her thin skin with both destructive broadside cannons, and front-facing slugthrowers and artilleries. Comes with an expansive cargo hold and industrial modules, as well as an experimental FTL drive capable of planetary landings.*
 
-    <details>
-      <summary>Armaments</summary>
-      * Fixedpoint
-        * 2 x .50 slugthrower turrets 
-      * Turret
-        * 3x heavy 'Hephaeustus' assault artillery platform 
-        * 10x light dual machineguns
-        * 4x 90mm heavy mortar-pounders
-    </details>
+## Armaments
 
-    <details>
-      <summary>Modules</summary>
-      * Module A: BLANK
-      * Module B: BLANK 
-      * Module C: Fire slugthrowers 
-      * Module D: Arm turrets 
-      * Module E: Disarm turrets
-    </details>
+* Fixedpoint
+  * 2 x .50 slugthrower turrets 
+* Turret
+  * 3x heavy 'Hephaeustus' assault artillery platform 
+  * 10x light dual machineguns
+  * 4x 90mm heavy mortar-pounders
 
-    <details>
-      <summary>Techlevel</summary>
-      > <TechLevel tech='Lowtech' />
-    </details>
 
-    <details>
-      <summary>Manufacturing Cost</summary>
-      <ShipCost shipName={frontmatter.title} />
-    </details>
+## Modules
 
-  </TabItem>
+* Module A: BLANK
+* Module B: BLANK 
+* Module C: Fire slugthrowers 
+* Module D: Arm turrets 
+* Module E: Disarm turrets
 
-  <TabItem label="Guide" icon="open-book">
-    TBD.
-  </TabItem>
 
-</Tabs>
+## Notes
+
+TBD.
+
+
+## Manufacturing Cost
+
+<ShipCost shipName={frontmatter.title} />
+
+
+## Techlevel
+
+* <TechLevel tech='Lowtech' />

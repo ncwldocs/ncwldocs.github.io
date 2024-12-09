@@ -1,50 +1,40 @@
 ---
 title: Zhipov
-tableOfContents: false
 ---
-import TechLevel from '../../../../components/TechLevel.astro';
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import TechLevel from '@components/TechLevel.astro';
 import ShipCost from '@components/ShipCost.astro';
 
-<Tabs>
 
-  <TabItem label="Info" icon="information">
+> *A converted capital freighter, the Zhipov stands a testament to collective, organized desperation. An Imperial freighter is captured, the container gravlocks and internal cargo bays are stripped out, and a microforge capable of printing ultralight strikeshuttles are installed within the vessel, alongside docking ports to accompany them. Wire warship-grade auto-guided turrets onto the broadsides, and the end result is the Zhipov.*
 
-  > *A converted capital freighter, the Zhipov stands a testament to collective, organized desperation. An Imperial freighter is captured, the container gravlocks and internal cargo bays are stripped out, and a microforge capable of printing ultralight strikeshuttles are installed within the vessel, alongside docking ports to accompany them. Wire warship-grade auto-guided turrets onto the broadsides, and the end result is the Zhipov.*
 
-  <details>
-    <summary>Armaments</summary>
-    * Turrets
-      * 2 x 'Swarmer' autorocket pods 
-      * 2 x 23mm automated ballistic turrets 
-      * 6 x 'Gran Sudaruska' point defense turrets
-  </details>
+## Armaments
 
-    <details>
-    <summary>Modules</summary>
-    * Module A: Bridge Reinforcement 
-    * Module B: Open Portside Fighter Shutters 
-    * Module C: Open Starboard Fighter Shutters 
-    * Module D: Disarm Turrets 
-    * Module E: Rearm Turrets Techlevel
-  </details>
+* Turrets
+  * 2 x 'Swarmer' autorocket pods 
+  * 2 x 23mm automated ballistic turrets 
+  * 6 x 'Gran Sudaruska' point defense turrets
 
-  <details>
-    <summary>Techlevel</summary>
-    > <TechLevel tech='Midtech' />
-  </details>
 
-  <details>
-    <summary>Manufacturing Cost</summary>
-    <ShipCost shipName={frontmatter.title} />
-  </details>
+## Modules
 
-  </TabItem>
+* Module A: Bridge Reinforcement 
+* Module B: Open Portside Fighter Shutters 
+* Module C: Open Starboard Fighter Shutters 
+* Module D: Disarm Turrets 
+* Module E: Rearm Turrets Techlevel
 
-  <TabItem label="Guide" icon="open-book">
-    ## Refitting Options
 
-    The Zhipov contains multiple thruster upgrade kits, to be utilized on docked fighters.
-  </TabItem>
+## Notes
 
-</Tabs>
+Keep the Zhipov out of direct combat and use only as a mobile base for rearming fighters. The Zhipov should come with several thruster upgrade kits to be used on docked ultralights.
+
+
+## Manufacturing Cost
+
+<ShipCost shipName={frontmatter.title} />
+
+
+## Techlevel
+
+* <TechLevel tech='Midtech' />

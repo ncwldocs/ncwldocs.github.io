@@ -1,41 +1,33 @@
 ---
 title: Termite
-tableOfContents: false
 ---
-import TechLevel from '../../../../components/TechLevel.astro'
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import TechLevel from '@components/TechLevel.astro'
 import ShipCost from '@components/ShipCost.astro';
 
-<Tabs>
 
-  <TabItem label="Info" icon="information">
+> *An ultra-frugal, ultra-light mining pod. Comes with the base, skeleton necessities for spaceflight and EVA. The rock bottom of rock bottom.*
 
-    > *An ultra-frugal, ultra-light mining pod. Comes with the base, skeleton necessities for spaceflight and EVA. The rock bottom of rock bottom.*
 
-    <details>
-      <summary>Armaments</summary>
-      * N/A
-    </details>
+## Armaments
 
-    <details>
-      <summary>Modules</summary>
-      * N/A
-    </details>
+* N/A
 
-    <details>
-      <summary>Techlevel</summary>
-      > <TechLevel tech='Civilian' />
-    </details>
 
-    <details>
-      <summary>Manufacturing Cost</summary>
-      <ShipCost shipName={frontmatter.title} />
-    </details>
+## Modules
 
-  </TabItem>
+* N/A
 
-  <TabItem label="Guide" icon="open-book">
-    TBD.
-  </TabItem>
 
-</Tabs>
+## Notes
+
+TBD.
+
+
+## Manufacturing Cost
+
+<ShipCost shipName={frontmatter.title} />
+
+
+## Techlevel
+
+* <TechLevel tech='Civilian' />
