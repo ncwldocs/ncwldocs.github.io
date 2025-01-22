@@ -31,30 +31,51 @@ const deedConsole = tradeDispensers.find(dispenser => dispenser.id == "DeedConso
 const tradeDeedValues = deedConsole.components.find(component => component.type == "Dispenser").inventory;
 
 const cargoChuteNCWL = tradeDispensers.find(dispenser => dispenser.id == "NovaBalreskaCargoChute");
-const cargoChuteNCWLDispenser = cargoChuteNCWL.components.find(component => component.type == "Dispenser");
+const cargoChuteNCWLInventory = cargoChuteNCWL.components.find(component => component.type == "Dispenser").inventory;
 
 const cargoChuteTFSC = tradeDispensers.find(dispenser => dispenser.id == "GrinningJackalCargoChute");
 const cargoChuteTFSCInventory = cargoChuteTFSC.components.find(component => component.type == "Dispenser").inventory;
 
+const cargoChuteDSM = tradeDispensers.find(dispenser => dispenser.id == "CountsmanCargoChute");
+const cargoChuteDSMInventory = cargoChuteDSM.components.find(component => component.type == "Dispenser").inventory;
+
 // Generate a list of trade goods, their prices, and their sell values.
 const tradeGoodsList = [];
 
-Object.keys(dispensaryNCWL.startingInventory).forEach(key => {
-    try {
-        const tradeGood = {};
-        const tradeGoodEntry = tradeGoods.find(crate => crate.id == key);
+for (const tradeGood of tradeGoods) {
+    if (tradeGood.id.startsWith("TradeGood")) {
+        const tradeGoodObject = {};
 
-        tradeGood.name = tradeGoodEntry.name;
-        tradeGood.price = tradeGoodEntry.components.find(component => component.type == "StaticPrice").price;
-        tradeGood.sellValueTFSC = getSpaceCash(tradeDeedValues[cargoChuteTFSCInventory[key]]);
+        tradeGoodObject.name = tradeGood.name;
+        tradeGoodObject.price = "";
+        tradeGoodObject.sellValueTFSC = "";
+        tradeGoodObject.sellValueDSM = "";
+        tradeGoodObject.sellValueNCWL = "";
+
+        // Get price if available from NCWL dispensary.
+        if (Object.keys(dispensaryNCWL.startingInventory).includes(tradeGood.id)) {
+            tradeGoodObject.price = tradeGood.components.find(component => component.type == "StaticPrice").price;
+        }
+
+        // Get redemption value from turn-in chutes.
+        if (Object.keys(cargoChuteTFSCInventory).includes(tradeGood.id)) {
+            tradeGoodObject.sellValueTFSC = getSpaceCash(tradeDeedValues[cargoChuteTFSCInventory[tradeGood.id]]);
+        }
+
+        if (Object.keys(cargoChuteDSMInventory).includes(tradeGood.id)) {
+            tradeGoodObject.sellValueDSM = getSpaceCash(tradeDeedValues[cargoChuteDSMInventory[tradeGood.id]]);
+        }
+
+        if (Object.keys(cargoChuteNCWLInventory).includes(tradeGood.id)) {
+            tradeGoodObject.sellValueNCWL = getSpaceCash(tradeDeedValues[cargoChuteNCWLInventory[tradeGood.id]]);
+        }
         
-        tradeGoodsList.push(tradeGood);
-    }
-    catch {
-        return;
-    }
-})
+        if (tradeGoodObject.sellValueTFSC || tradeGoodObject.sellValueDSM || tradeGoodObject.sellValueNCWL) {
+            tradeGoodsList.push(tradeGoodObject);
+        }
 
+    }
+}
 
 
 ---
@@ -62,7 +83,17 @@ Object.keys(dispensaryNCWL.startingInventory).forEach(key => {
     <tr>
         <th>Trade Good</th>
         <th>Purchase Cost</th>
-        <th>Sell Value at Freeport</th>
+        <th>Freeport</th>
+        <th>Kal Surezai</th>
+        <th>Port Vladzena</th>
     </tr>
-    {tradeGoodsList.map((tradeGood) => <tr><td>{tradeGood.name}</td><td>{tradeGood.price}</td><td>{tradeGood.sellValueTFSC}</td></tr>)}
+    {tradeGoodsList.map((tradeGood) => 
+    <tr>
+        <td>{tradeGood.name}</td>
+        <td>{tradeGood.price}</td>
+        <td>{tradeGood.sellValueTFSC}</td>
+        <td>{tradeGood.sellValueDSM}</td>
+        <td>{tradeGood.sellValueNCWL}</td>
+    </tr>
+    )}
 </table>
