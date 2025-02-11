@@ -2,13 +2,45 @@
 import fs from 'fs'
 import YAML from 'yaml'
 
-// TO DO: automate gathering of ammo manufacturing costs from YAML
-
-/*
 const YAMLFolder = './src/assets/data/Hullrot-YAML-Prototypes';
 
-const recipeAmmoFactoryFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Factory/factory.yml`, 'utf8');
-const recipeAmmoLatheFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Recipes/Lathes/ammo.yml`, 'utf8');
-*/
+const ammoFactoryFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Factory/factory.yml`, 'utf8');
+const ammoFactoryList = YAML.parse(ammoFactoryFile, { logLevel: 'error' });
+
+const recipeMunitionsFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Recipes/Factory/munitions.yml`, 'utf8');
+const recipeMunitionsList = YAML.parse(recipeMunitionsFile, { logLevel: 'error' });
+
+const ammoFactory = ammoFactoryList.find(factory => factory.id == "Factory120Fab");
+const ammoFactoryRecipes = ammoFactory.components.find(component => component.type == "Factory").recipes;
+
+const munitionsList = [];
+
+for (const recipe of ammoFactoryRecipes) {
+    const munition = {};
+    munition.name = recipeMunitionsList.find(munition => munition.id == recipe).name;
+    munition.cost = [];
+
+    const munitionInputsList = recipeMunitionsList.find(munition => munition.id == recipe).inputs;
+
+    Object.keys(munitionInputsList).forEach(key => {
+        munition.cost.push(`${munitionInputsList[key]} ${key}`);
+    })
+
+    munitionsList.push(munition);
+}
 
 ---
+<table>
+    <thread>
+        <tr>
+            <th>Material</th>
+            <th>Ammunition</th>
+        </tr>
+    </thread>
+    {munitionsList.map((munition) => 
+    <tr>
+        <td>{munition.cost.join(', ')}</td>
+        <td>{munition.name}</td>
+    </tr>
+    )}
+</table>

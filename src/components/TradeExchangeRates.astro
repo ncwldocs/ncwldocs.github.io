@@ -42,36 +42,37 @@ const cargoChuteDSMInventory = cargoChuteDSM.components.find(component => compon
 // Generate a list of trade goods, their prices, and their sell values.
 const tradeGoodsList = [];
 
-for (const tradeGood of tradeGoods) {
-    if (tradeGood.id.startsWith("TradeGood")) {
-        const tradeGoodObject = {};
+for (const t of tradeGoods) {
+    if (t.id.startsWith("TradeGood")) {
+        const tradeGood = {};
 
-        tradeGoodObject.name = tradeGood.name;
-        tradeGoodObject.price = "";
-        tradeGoodObject.sellValueTFSC = "";
-        tradeGoodObject.sellValueDSM = "";
-        tradeGoodObject.sellValueNCWL = "";
+        tradeGood.name = t.name;
+        tradeGood.price = "";
+        tradeGood.sellValueTFSC = "";
+        tradeGood.sellValueDSM = "";
+        tradeGood.sellValueNCWL = "";
 
         // Get price if available from NCWL dispensary.
         if (Object.keys(dispensaryNCWL.startingInventory).includes(tradeGood.id)) {
-            tradeGoodObject.price = tradeGood.components.find(component => component.type == "StaticPrice").price;
+            tradeGood.price = t.components.find(component => component.type == "StaticPrice").price;
         }
 
         // Get redemption value from turn-in chutes.
-        if (Object.keys(cargoChuteTFSCInventory).includes(tradeGood.id)) {
-            tradeGoodObject.sellValueTFSC = getSpaceCash(tradeDeedValues[cargoChuteTFSCInventory[tradeGood.id]]);
+        if (Object.keys(cargoChuteTFSCInventory).includes(t.id)) {
+            tradeGood.sellValueTFSC = getSpaceCash(tradeDeedValues[cargoChuteTFSCInventory[t.id]]);
         }
 
-        if (Object.keys(cargoChuteDSMInventory).includes(tradeGood.id)) {
-            tradeGoodObject.sellValueDSM = getSpaceCash(tradeDeedValues[cargoChuteDSMInventory[tradeGood.id]]);
+        if (Object.keys(cargoChuteDSMInventory).includes(t.id)) {
+            tradeGood.sellValueDSM = getSpaceCash(tradeDeedValues[cargoChuteDSMInventory[t.id]]);
         }
 
-        if (Object.keys(cargoChuteNCWLInventory).includes(tradeGood.id)) {
-            tradeGoodObject.sellValueNCWL = getSpaceCash(tradeDeedValues[cargoChuteNCWLInventory[tradeGood.id]]);
+        if (Object.keys(cargoChuteNCWLInventory).includes(t.id)) {
+            tradeGood.sellValueNCWL = getSpaceCash(tradeDeedValues[cargoChuteNCWLInventory[t.id]]);
         }
         
-        if (tradeGoodObject.sellValueTFSC || tradeGoodObject.sellValueDSM || tradeGoodObject.sellValueNCWL) {
-            tradeGoodsList.push(tradeGoodObject);
+        // Only add to list if the trade good is actually redeemable somewhere.
+        if (tradeGood.sellValueTFSC || tradeGood.sellValueDSM || tradeGood.sellValueNCWL) {
+            tradeGoodsList.push(tradeGood);
         }
 
     }
