@@ -53,7 +53,7 @@ for (const t of tradeGoods) {
         tradeGood.sellValueNCWL = "";
 
         // Get price if available from NCWL dispensary.
-        if (Object.keys(dispensaryNCWL.startingInventory).includes(tradeGood.id)) {
+        if (Object.keys(dispensaryNCWL.startingInventory).includes(t.id)) {
             tradeGood.price = t.components.find(component => component.type == "StaticPrice").price;
         }
 
