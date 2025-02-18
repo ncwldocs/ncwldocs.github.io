@@ -23,6 +23,15 @@ const tradeDispensers = YAML.parse(tradeDispensersFile, { logLevel: 'error' });
 const tradeGoodsFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Objects/Misc/trade.yml`, 'utf8');
 const tradeGoods = YAML.parse(tradeGoodsFile, { logLevel: 'error' });
 
+// YML files containing trade goods available at cargo consoles.
+const cargoTradeGoodsDSMFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Catalog/Cargo/Surezai/tradegoods.yml`, 'utf8');
+const cargoTradeGoodsDSM = YAML.parse(cargoTradeGoodsDSMFile, { logLevel: 'error' });
+
+const cargoTradeGoodsTFSCFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Catalog/Cargo/Freeport/tradegoods.yml`, 'utf8');
+const cargoTradeGoodsTFSC = YAML.parse(cargoTradeGoodsTFSCFile, { logLevel: 'error' });
+
+console.log(cargoTradeGoodsDSM.find(cargoProduct => cargoProduct.product == "TradeGoodScrap"));
+
 // Find each station's cargo dispensary.
 const dispensaryNCWL = cargoDispensers.find(dispenser => dispenser.id == "NovaBelraskaDispensary");
 const dispensaryGliess = cargoDispensers.find(dispenser => dispenser.id == "InterdyneDispensary");
@@ -51,7 +60,7 @@ for (const t of tradeGoods) {
         const tradeGood = {};
 
         tradeGood.name = t.name;
-        tradeGood.price = "";
+        tradeGood.price = [];
         tradeGood.purchaseLocation = [];
         tradeGood.sellValueTFSC = "";
         tradeGood.sellValueDSM = "";
@@ -59,13 +68,24 @@ for (const t of tradeGoods) {
         tradeGood.sellValueGliess = "";
 
         // Get price if available from dispensaries.
-        if (Object.keys(dispensaryNCWL.startingInventory).includes(t.id) || Object.keys(dispensaryGliess.startingInventory).includes(t.id)) {
-            tradeGood.price = t.components.find(component => component.type == "StaticPrice").price;
+        if (Object.keys(dispensaryNCWL.startingInventory).includes(t.id) || Object.keys(dispensaryGliess.startingInventory).includes(t.id) || cargoTradeGoodsDSM.find(cargoProduct => cargoProduct.product == t.id) || cargoTradeGoodsTFSC.find(cargoProduct => cargoProduct.product == t.id)) {
+            // tradeGood.price = t.components.find(component => component.type == "StaticPrice").price;
             if (Object.keys(dispensaryNCWL.startingInventory).includes(t.id)) {
                 tradeGood.purchaseLocation.push("Port Vladzena");
+                tradeGood.price[0] = t.components.find(component => component.type == "StaticPrice").price;
             }
             if (Object.keys(dispensaryGliess.startingInventory).includes(t.id)) {
                 tradeGood.purchaseLocation.push("Gliess Santo");
+                tradeGood.price[0] = t.components.find(component => component.type == "StaticPrice").price;
+            }
+            if (cargoTradeGoodsDSM.find(cargoProduct => cargoProduct.product == t.id)) {
+                tradeGood.purchaseLocation.push("Kal Surezai");
+                tradeGood.price.push(cargoTradeGoodsDSM.find(cargoProduct => cargoProduct.product == t.id).cost);
+            }
+            if (cargoTradeGoodsTFSC.find(cargoProduct => cargoProduct.product == t.id)) {
+                tradeGood.purchaseLocation.push("Freeport")
+                tradeGood.price.push(cargoTradeGoodsTFSC.find(cargoProduct => cargoProduct.product == t.id).cost);
+                // console.log(cargoTradeGoodsTFSC.find(cargoProduct => cargoProduct.product == t.id));
             }
         }
 
@@ -84,6 +104,11 @@ for (const t of tradeGoods) {
 
         if (Object.keys(cargoChuteGliessInventory).includes(t.id)) {
             tradeGood.sellValueGliess = getSpaceCash(tradeDeedValues[cargoChuteGliessInventory[t.id]]);
+        }
+
+        // Properly join costs.
+        if (tradeGood.price.length > 1) {
+            tradeGood.price = tradeGood.price.join(", ");
         }
         
         // Only add to list if the trade good is actually redeemable somewhere.
