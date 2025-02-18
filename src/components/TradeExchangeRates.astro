@@ -23,8 +23,9 @@ const tradeDispensers = YAML.parse(tradeDispensersFile, { logLevel: 'error' });
 const tradeGoodsFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Objects/Misc/trade.yml`, 'utf8');
 const tradeGoods = YAML.parse(tradeGoodsFile, { logLevel: 'error' });
 
-// Find the NCWL dispensary's starting inventory.
+// Find each station's cargo dispensary.
 const dispensaryNCWL = cargoDispensers.find(dispenser => dispenser.id == "NovaBelraskaDispensary");
+const dispensaryGliess = cargoDispensers.find(dispenser => dispenser.id == "InterdyneDispensary");
 
 // Find the Deed Console and each station's cargo turn-in chute.
 const deedConsole = tradeDispensers.find(dispenser => dispenser.id == "DeedConsole");
@@ -39,6 +40,9 @@ const cargoChuteTFSCInventory = cargoChuteTFSC.components.find(component => comp
 const cargoChuteDSM = tradeDispensers.find(dispenser => dispenser.id == "CountsmanCargoChute");
 const cargoChuteDSMInventory = cargoChuteDSM.components.find(component => component.type == "Dispenser").inventory;
 
+const cargoChuteGliess = tradeDispensers.find(dispenser => dispenser.id == "InterdyneCargoChute");
+const cargoChuteGliessInventory = cargoChuteGliess.components.find(component => component.type == "Dispenser").inventory;
+
 // Generate a list of trade goods, their prices, and their sell values.
 const tradeGoodsList = [];
 
@@ -48,13 +52,21 @@ for (const t of tradeGoods) {
 
         tradeGood.name = t.name;
         tradeGood.price = "";
+        tradeGood.purchaseLocation = [];
         tradeGood.sellValueTFSC = "";
         tradeGood.sellValueDSM = "";
         tradeGood.sellValueNCWL = "";
+        tradeGood.sellValueGliess = "";
 
-        // Get price if available from NCWL dispensary.
-        if (Object.keys(dispensaryNCWL.startingInventory).includes(t.id)) {
+        // Get price if available from dispensaries.
+        if (Object.keys(dispensaryNCWL.startingInventory).includes(t.id) || Object.keys(dispensaryGliess.startingInventory).includes(t.id)) {
             tradeGood.price = t.components.find(component => component.type == "StaticPrice").price;
+            if (Object.keys(dispensaryNCWL.startingInventory).includes(t.id)) {
+                tradeGood.purchaseLocation.push("Port Vladzena");
+            }
+            if (Object.keys(dispensaryGliess.startingInventory).includes(t.id)) {
+                tradeGood.purchaseLocation.push("Gliess Santo");
+            }
         }
 
         // Get redemption value from turn-in chutes.
@@ -69,9 +81,13 @@ for (const t of tradeGoods) {
         if (Object.keys(cargoChuteNCWLInventory).includes(t.id)) {
             tradeGood.sellValueNCWL = getSpaceCash(tradeDeedValues[cargoChuteNCWLInventory[t.id]]);
         }
+
+        if (Object.keys(cargoChuteGliessInventory).includes(t.id)) {
+            tradeGood.sellValueGliess = getSpaceCash(tradeDeedValues[cargoChuteGliessInventory[t.id]]);
+        }
         
         // Only add to list if the trade good is actually redeemable somewhere.
-        if (tradeGood.sellValueTFSC || tradeGood.sellValueDSM || tradeGood.sellValueNCWL) {
+        if (tradeGood.sellValueTFSC || tradeGood.sellValueDSM || tradeGood.sellValueNCWL || tradeGood.sellValueGliess) {
             tradeGoodsList.push(tradeGood);
         }
 
@@ -83,16 +99,20 @@ for (const t of tradeGoods) {
 <table>
     <tr>
         <th>Trade Good</th>
-        <th>Purchase Cost</th>
+        <th>Cost</th>
+        <th>Available At</th>
         <th>Freeport</th>
+        <th>Gliess Santo</th>
         <th>Kal Surezai</th>
-        <th>Port Vladzena</th>
+        <th>Port Vladzena</th>   
     </tr>
     {tradeGoodsList.map((tradeGood) => 
     <tr>
         <td>{tradeGood.name}</td>
         <td>{tradeGood.price}</td>
+        <td>{tradeGood.purchaseLocation.join(", ")}</td>
         <td>{tradeGood.sellValueTFSC}</td>
+        <td>{tradeGood.sellValueGliess}</td>
         <td>{tradeGood.sellValueDSM}</td>
         <td>{tradeGood.sellValueNCWL}</td>
     </tr>
