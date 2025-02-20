@@ -9,15 +9,14 @@ const YAMLFolder = './src/assets/data/Hullrot-YAML-Prototypes';
 const recipeLPCsFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Recipes/Lathes/shiplpcs.yml`, 'utf8');
 const recipeShipComponentsFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Recipes/Lathes/shipcomponents.yml`, 'utf8');
 
-/*
-const YAMLFolder = './src/assets/data/'
-
-const recipeLPCsFile = fs.readFileSync(`${YAMLFolder}/shiplpcs.yml`, 'utf8');
-const recipeShipComponentsFile = fs.readFileSync(`${YAMLFolder}/shipcomponents.yml`, 'utf8');
-*/
-
 const recipeLPCs = YAML.parse(recipeLPCsFile);
 const recipeShipComponents = YAML.parse(recipeShipComponentsFile);
+
+// each unit of steel, silver, gold, plasma contains 100 of said material
+// each ship component contain 500 of said material
+// hard-coded because it's in four different places
+const materialDivisor = 100;
+const shipComponentDivisor = 500;
 
 const shipLPCEntry = recipeLPCs.find(ship => ship.id.includes(shipName));
 
@@ -31,24 +30,23 @@ const costLPCMaterials = {
 }
 
 Object.keys(shipLPCEntry.materials).forEach(key => {
-    costLPC[key] = shipLPCEntry.materials[key] / 500;
+    costLPC[key] = shipLPCEntry.materials[key] / shipComponentDivisor;
 })
 
-const shipEngineEntry = recipeShipComponents.find(component => component.id.includes("Engine"));
-const shipElectronicsEntry = recipeShipComponents.find(component => component.id.includes("Electronics"));
-const shipHullEntry = recipeShipComponents.find(component => component.id.includes("Hull"));
+const shipEngineEntry = recipeShipComponents.find(component => component.id == "ShipEngine");
+const shipElectronicsEntry = recipeShipComponents.find(component => component.id == "ShipElectronics");
+const shipHullEntry = recipeShipComponents.find(component => component.id == "ShipHull");
 
 Object.keys(shipEngineEntry.materials).forEach(key => {
-    costLPCMaterials[key] += (shipEngineEntry.materials[key] * costLPC.StarshipEngineComponents) / 100;
-    // console.log(key);
+    costLPCMaterials[key] += (shipEngineEntry.materials[key] * costLPC.StarshipEngineComponents) / materialDivisor;
 })
 
 Object.keys(shipElectronicsEntry.materials).forEach(key => {
-    costLPCMaterials[key] += (shipElectronicsEntry.materials[key] * costLPC.ShipComponents) / 100;
+    costLPCMaterials[key] += (shipElectronicsEntry.materials[key] * costLPC.ShipComponents) / materialDivisor;
 })
 
 Object.keys(shipHullEntry.materials).forEach(key => {
-    costLPCMaterials[key] += (shipHullEntry.materials[key] * costLPC.ShipHull) / 100;
+    costLPCMaterials[key] += (shipHullEntry.materials[key] * costLPC.ShipHull) / materialDivisor;
 })
 
 ---
@@ -58,10 +56,10 @@ Object.keys(shipHullEntry.materials).forEach(key => {
     <li><strong>Hull Components</strong>: {costLPC.ShipHull}</li>
     <li><strong>Total Materials: </strong>
         <ul>
-            <li>Steel: {costLPCMaterials.Steel}</li>
-            <li>Silver: {costLPCMaterials.Silver}</li>
-            <li>Gold: {costLPCMaterials.Gold}</li>
-            <li>Plasma: {costLPCMaterials.Plasma}</li>
+            <li>Steel: {Math.round(costLPCMaterials.Steel * 1000) / 1000}</li>
+            <li>Silver: {Math.round(costLPCMaterials.Silver * 1000) / 1000}</li>
+            <li>Gold: {Math.round(costLPCMaterials.Gold * 1000) / 1000}</li>
+            <li>Plasma: {Math.round(costLPCMaterials.Plasma * 1000) / 1000}</li>
         </ul>
     </li>
 </ul>
