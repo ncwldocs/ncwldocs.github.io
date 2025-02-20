@@ -31,7 +31,7 @@ const costLPCMaterials = {
 }
 
 Object.keys(shipLPCEntry.materials).forEach(key => {
-    costLPC[key] = shipLPCEntry.materials[key] / 100;
+    costLPC[key] = shipLPCEntry.materials[key] / 500;
 })
 
 const shipEngineEntry = recipeShipComponents.find(component => component.id.includes("Engine"));
@@ -39,16 +39,16 @@ const shipElectronicsEntry = recipeShipComponents.find(component => component.id
 const shipHullEntry = recipeShipComponents.find(component => component.id.includes("Hull"));
 
 Object.keys(shipEngineEntry.materials).forEach(key => {
-    costLPCMaterials[key] += (shipEngineEntry.materials[key] * costLPC.StarshipEngineComponents) / 500;
+    costLPCMaterials[key] += (shipEngineEntry.materials[key] * costLPC.StarshipEngineComponents) / 100;
     // console.log(key);
 })
 
 Object.keys(shipElectronicsEntry.materials).forEach(key => {
-    costLPCMaterials[key] += (shipElectronicsEntry.materials[key] * costLPC.ShipComponents) / 500;
+    costLPCMaterials[key] += (shipElectronicsEntry.materials[key] * costLPC.ShipComponents) / 100;
 })
 
 Object.keys(shipHullEntry.materials).forEach(key => {
-    costLPCMaterials[key] += (shipHullEntry.materials[key] * costLPC.ShipHull) / 500;
+    costLPCMaterials[key] += (shipHullEntry.materials[key] * costLPC.ShipHull) / 100;
 })
 
 ---
