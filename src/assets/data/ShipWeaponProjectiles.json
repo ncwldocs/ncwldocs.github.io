@@ -1,0 +1,62 @@
+{
+"ShuttleGunPlasmaRepeater": {
+    "projectile": "BulletMachineGunPlasmaShuttle"
+    },
+"ShuttleGunExhumer": {
+    "projectile": "BulletKineticShuttle"
+    },
+"ShuttleGunTorpedo": {
+    "projectile": "TorpedoBase"
+    },
+"ShuttleGunKurosawa": {
+    "projectile": "BulletGrenadeBaton"
+    },
+"ShuttleGunMissileRack": {
+    "projectile": "BulletGrenadeBaton"
+    },
+"SHISlugthrowerTurret": {
+    "projectile": "BulletMachineGunArmorPiercing"
+    },
+"HardlineBeamPulser": {
+    "projectile": "BulletMachineGunPlasmaShuttleLarge"
+    },
+"Type99Artillery": {
+    "projectile": "BulletShellArmorPiercing"
+    },
+"AcceleratorCannon": {
+    "projectile": "BulletRailHighExplosive"
+    },
+"NTVulcanTurret": {
+    "projectile": "BulletMachineGunVulcan"
+    },
+"BaseWeaponTurretPDT": {
+    "projectile": "PDTBullet"
+    },
+"WeaponTurretPDTNCWL": {
+    "projectile": "PDTBullet"
+    },
+"WeaponTurretVulcanNCWL": {
+    "projectile": "BulletMachineGunVulcan"
+    },
+"WeaponTurretSwarmerNCWL": {
+    "projectile": "SwarmerMissile"
+    },
+"WeaponTurretMortarNCWL": {
+    "projectile": "BulletMachineGunMortarTurret"
+    },
+"BaseWeaponTurretNeedlerNCWL": {
+    "projectile": "NeedlerBase"
+    },
+"BaseWeaponTurretGargoyle": {
+    "projectile": "TorpedoGargoyle"
+    },
+"BaseWeaponTurretLancer": {
+    "projectile": "LanceRocketProjectile"
+    },
+"BaseWeaponTurretBattlemortar": {
+    "projectile": "BattlemortarProjectile"
+    },
+"BaseWeaponTurretSmartbombNCWL": {
+    "projectile": "SmartBombBase"
+}
+}

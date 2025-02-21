@@ -2,6 +2,7 @@
 title: Ivarod
 ---
 import ShipCost from '@components/ShipCost.astro';
+import ShipWeapon from '@components/ShipWeapon.astro';
 
 
 > *A steady mining barge converted into an overdriven light destroyer, the Ivarod's mining depth charges were ripped out in favor of the tried-and-tested Type-99 artillery hardpoints. Welded-on external gun mounts further allow for more offensive and defensive capability, with a steady spread of low-caliber point defense near the back and destructive rocket pods and autoguns near the front. Outfitted for long-term deployments, the Ivarod excels at sideliner and escort duty, assisting larger allies within a fleet, although it struggles on its own against larger targets.*
@@ -9,10 +10,12 @@ import ShipCost from '@components/ShipCost.astro';
 
 ## Armaments
 
-* 2x SHI Type-99 artillery hardpoint 
-* 6x 'Gran Sudaruska' point defense light machine gun 
-* 6x 60mm 'Needler' heavy precision autogun 
-* 2x 'Swarmer' 38mm autorocket pod
+* Fixed
+    * 2x <ShipWeapon weaponID="Type99Artillery" />
+* Turret
+    * 6x <ShipWeapon weaponID="WeaponTurretPDTNCWL" />
+    * 6x <ShipWeapon weaponID="BaseWeaponTurretNeedlerNCWL" />
+    * 2x <ShipWeapon weaponID="WeaponTurretSwarmerNCWL" />
 
 
 ## Modules

@@ -1,0 +1,48 @@
+---
+import fs from 'fs'
+import YAML from 'yaml'
+
+const { weaponID } = Astro.props;
+
+const YAMLFolder = './src/assets/data/Hullrot-YAML-Prototypes';
+
+const cannons = YAML.parse(fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Structures/cannons.yml`, 'utf8'), { logLevel: 'error' });
+const turrets = YAML.parse(fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Structures/turrets.yml`, 'utf8'), { logLevel: 'error' });
+
+const projectilesShells = YAML.parse(fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/SpaceArtillery/shells.yml`, 'utf8'), { logLevel: 'error' });
+const projectilesCannonAmmo = YAML.parse(fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Objects/Ammunition/cannonammo.yml`, 'utf8'), { logLevel: 'error' });
+const projectilesOther = YAML.parse(fs.readFileSync(`${YAMLFolder}/Entities/Objects/Weapons/Guns/Projectiles/projectiles.yml`, 'utf8'), { logLevel: 'error' });
+
+// Manually defined in a JSON file because tracing back through various cartridges and magazines programmatically is nightmarish.
+const shipWeaponProjectiles = JSON.parse(fs.readFileSync(`./src/assets/data/ShipWeaponProjectiles.json`, 'utf8'));
+
+// If an entity doesn't have a given component, search its parents.
+function recursiveComponentSearch(entity: object, entityFile: object, componentType: string) {
+    let result;
+    let currentSearch = entity;
+    while (!result) {
+        if (currentSearch.components.find(component => component.type == componentType)) {
+            result = currentSearch.components.find(component => component.type == componentType);
+        } else {
+            currentSearch = entityFile.find(entity => entity.id == currentSearch.parent);
+        }
+    }
+
+    return result;
+}
+
+const weaponFile = cannons.find(weapon => weapon.id == weaponID) ? cannons: turrets;
+const weaponEntry = weaponFile.find(weapon => weapon.id == weaponID);
+const weaponName = weaponEntry.name;
+const weaponSpeed = recursiveComponentSearch(weaponEntry, weaponFile, "Gun").projectileSpeed;
+
+const projectileType = shipWeaponProjectiles[weaponID].projectile;
+const projectileFile = projectilesShells.find(projectile => projectile.id == projectileType) ? projectilesShells
+                     : projectilesCannonAmmo.find(projectile => projectile.id == projectileType) ? projectilesCannonAmmo 
+                     : projectilesOther;
+const projectileEntry = projectileFile.find(projectile => projectile.id == projectileType);
+const projectileLifetime = recursiveComponentSearch(projectileEntry, projectileFile, "TimedDespawn").lifetime;
+
+const weaponRange = weaponSpeed * projectileLifetime;
+---
+<b>{weaponName}</b> <sup><i>{weaponRange}m</i></sup>

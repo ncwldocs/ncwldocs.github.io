@@ -2,6 +2,7 @@
 title: Zhipov
 ---
 import ShipCost from '@components/ShipCost.astro';
+import ShipWeapon from '@components/ShipWeapon.astro';
 
 
 > *A converted capital freighter, the Zhipov stands a testament to collective, organized desperation. An Imperial freighter is captured, the container gravlocks and internal cargo bays are stripped out, and a microforge capable of printing ultralight strikeshuttles are installed within the vessel, alongside docking ports to accompany them. Wire warship-grade auto-guided turrets onto the broadsides, and the end result is the Zhipov.*
@@ -10,9 +11,9 @@ import ShipCost from '@components/ShipCost.astro';
 ## Armaments
 
 * Turrets
-  * 2 x 'Swarmer' autorocket pods 
-  * 2 x 23mm automated ballistic turrets 
-  * 6 x 'Gran Sudaruska' point defense turrets
+  * 2x <ShipWeapon weaponID="WeaponTurretSwarmerNCWL" />
+  * 2x <ShipWeapon weaponID="WeaponTurretVulcanNCWL" />
+  * 6x <ShipWeapon weaponID="WeaponTurretPDTNCWL" />
 
 
 ## Modules

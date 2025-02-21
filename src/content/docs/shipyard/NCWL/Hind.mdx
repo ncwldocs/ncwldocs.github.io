@@ -2,16 +2,20 @@
 title: Hind
 ---
 import ShipCost from '@components/ShipCost.astro';
+import ShipWeapon from '@components/ShipWeapon.astro';
 
 
 > *A civilian exploration frigate converted into a nimble missile carrier. The Hind boasts heavy manoeuvring thrusters and robust, all-rounding point defense coverage. Armed with the Gargoyle cruise missile platform as its primary weapon, a well-defended Hind is perfectly capable of raining hell on targets from the backline.*
 
 ## Armaments
 
-* 1x 'Gargoyle' cruise missile platform
-* 2x 'Lancer' swarmrocket launcher
-* 6x 'Gran Sudaruska' light dual machine gun
-* 2x SHI 50cc slugthrower
+* Fixed
+    * 2x <ShipWeapon weaponID="SHISlugthrowerTurret" />
+* Turret
+    * 1x <ShipWeapon weaponID="BaseWeaponTurretGargoyle" />
+    * 2x <ShipWeapon weaponID="BaseWeaponTurretLancer" />
+    * 6x <ShipWeapon weaponID="WeaponTurretPDTNCWL" />
+
 
 
 ## Modules

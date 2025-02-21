@@ -3,6 +3,7 @@ title: Bogatyr
 prev: false
 ---
 import ShipCost from '@components/ShipCost.astro';
+import ShipWeapon from '@components/ShipWeapon.astro';
 
 
 > *An outdated Imperial scouting gunship converted into a stealth bomber - the Bogatyr invests heavily into ballistics; with two SHI slugthrowers and missile racks. Implemented with a fortified 'combat' mode and radio jammer, the Bogatyr sees frequent use in many communard naval operations today.*
@@ -10,9 +11,10 @@ import ShipCost from '@components/ShipCost.astro';
 
 ## Armaments
 
-* Hardpoint
-  * 2x SHI Slugthrower 
-  * 2x NT Sumitomo Missile Rack
+* Fixed
+  * 2x <ShipWeapon weaponID="SHISlugthrowerTurret" />
+  * 2x <ShipWeapon weaponID="ShuttleGunMissileRack" />
+
 
 ## Modules
 

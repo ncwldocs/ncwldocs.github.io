@@ -2,6 +2,7 @@
 title: Gargut
 ---
 import ShipCost from '@components/ShipCost.astro';
+import ShipWeapon from '@components/ShipWeapon.astro';
 
 
 > *The large volume of space-based conflict in the Sector often spells the demise of many outposts, waystations, and starfortresses. The Gargut had met such a fate; originally a minor, derelict fabhub, she was later converted into a bulksome, shambling battlecarrier, superior at range with her frontal guns, and capable at swatting flankers away with her rear cannons. She still bears much of the same modules as she did in her civilian life, and with the added strain of so many cannons and a slapdash fighter bay, her powergrid often struggles to keep up with the demand. Longer breaks between battles might be necessary for those that want to pilot this shambling monstrosity.*
@@ -9,13 +10,13 @@ import ShipCost from '@components/ShipCost.astro';
 
 ## Armaments
 
-* Hardpoints 
-  * 3x Type-99 Artillery (Starboard and Portside, front-facing) 
-* Turrets 
-  * 4x 90mm heavy auto-mortars 
-  * 2x 'Pilum' long-distance smartbombs [Heatseeking] 
-  * 8x 'Gran Sudaruska' point defense turrets 
-  * 4x 60mm 'Needler' heavy precision autogun
+* Fixed 
+  * 3x <ShipWeapon weaponID="Type99Artillery" />
+* Turret 
+  * 4x <ShipWeapon weaponID="WeaponTurretMortarNCWL" />
+  * 2x <ShipWeapon weaponID="BaseWeaponTurretSmartbombNCWL" />
+  * 8x <ShipWeapon weaponID="WeaponTurretPDTNCWL" />
+  * 4x <ShipWeapon weaponID="BaseWeaponTurretNeedlerNCWL" />
 
 
 ## Modules

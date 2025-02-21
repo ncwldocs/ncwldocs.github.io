@@ -2,6 +2,7 @@
 title: Sasha
 ---
 import ShipCost from '@components/ShipCost.astro';
+import ShipWeapon from '@components/ShipWeapon.astro';
 
 
 > *A converted assault cruiser, the Sasha is an experimental hull design first used as armed haulers in Chengridz, and later on as self-sufficient long-distance patrol vessels in Taypan. Although lacking in armor, the Sasha more than makes up for her thin skin with both destructive broadside cannons, and front-facing slugthrowers and artilleries. Comes with an expansive cargo hold and industrial modules, as well as an experimental FTL drive capable of planetary landings.*
@@ -9,12 +10,12 @@ import ShipCost from '@components/ShipCost.astro';
 
 ## Armaments
 
-* Fixedpoint
-  * 2 x .50 slugthrower turrets 
+* Fixed
+  * 2x <ShipWeapon weaponID="SHISlugthrowerTurret" />
 * Turret
-  * 3x heavy 'Hephaeustus' assault artillery platform 
-  * 10x light dual machineguns
-  * 4x 90mm heavy mortar-pounders
+  * 2x <ShipWeapon weaponID="BaseWeaponTurretBattlemortar" />
+  * 10x <ShipWeapon weaponID="WeaponTurretPDTNCWL" />
+  * 4x <ShipWeapon weaponID="WeaponTurretMortarNCWL" />
 
 
 ## Modules
