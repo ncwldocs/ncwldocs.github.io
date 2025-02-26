@@ -1,6 +1,7 @@
 ---
 import fs from 'fs'
 import YAML from 'yaml'
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 const { shipName } = Astro.props;
 
@@ -29,6 +30,8 @@ const costLPCMaterials = {
     Plasma: 0
 }
 
+const NCWLShipyardMultiplier = 1.1765; // NCWL shipyard manufactorium is configured to use 17.65% more materials than default
+
 Object.keys(shipLPCEntry.materials).forEach(key => {
     costLPC[key] = shipLPCEntry.materials[key] / shipComponentDivisor;
 })
@@ -50,16 +53,35 @@ Object.keys(shipHullEntry.materials).forEach(key => {
 })
 
 ---
-<ul>
-    <li><strong>Engine Components</strong>: {costLPC.StarshipEngineComponents}</li>
-    <li><strong>Electronics Components</strong>: {costLPC.ShipComponents}</li>
-    <li><strong>Hull Components</strong>: {costLPC.ShipHull}</li>
-    <li><strong>Total Materials: </strong>
+<Tabs>
+    <TabItem label="NCWL Shipyard Values">
         <ul>
-            <li>Steel: {Math.round(costLPCMaterials.Steel * 1000) / 1000}</li>
-            <li>Silver: {Math.round(costLPCMaterials.Silver * 1000) / 1000}</li>
-            <li>Gold: {Math.round(costLPCMaterials.Gold * 1000) / 1000}</li>
-            <li>Plasma: {Math.round(costLPCMaterials.Plasma * 1000) / 1000}</li>
+            <li><strong>Engine Components</strong>: {costLPC.StarshipEngineComponents}</li>
+            <li><strong>Electronics Components</strong>: {costLPC.ShipComponents}</li>
+            <li><strong>Hull Components</strong>: {costLPC.ShipHull}</li>
+            <li><strong>Total Materials: </strong>
+                <ul>
+                    <li>Steel: {Math.round(costLPCMaterials.Steel * NCWLShipyardMultiplier * 1000) / 1000}</li>
+                    <li>Silver: {Math.round(costLPCMaterials.Silver * NCWLShipyardMultiplier * 1000) / 1000}</li>
+                    <li>Gold: {Math.round(costLPCMaterials.Gold * NCWLShipyardMultiplier * 1000) / 1000}</li>
+                    <li>Plasma: {Math.round(costLPCMaterials.Plasma * NCWLShipyardMultiplier * 1000) / 1000}</li>
+                </ul>
+            </li>
         </ul>
-    </li>
-</ul>
+    </TabItem>
+    <TabItem label="Default Values">
+        <ul>
+            <li><strong>Engine Components</strong>: {costLPC.StarshipEngineComponents}</li>
+            <li><strong>Electronics Components</strong>: {costLPC.ShipComponents}</li>
+            <li><strong>Hull Components</strong>: {costLPC.ShipHull}</li>
+            <li><strong>Total Materials: </strong>
+                <ul>
+                    <li>Steel: {Math.round(costLPCMaterials.Steel * 1000) / 1000}</li>
+                    <li>Silver: {Math.round(costLPCMaterials.Silver * 1000) / 1000}</li>
+                    <li>Gold: {Math.round(costLPCMaterials.Gold * 1000) / 1000}</li>
+                    <li>Plasma: {Math.round(costLPCMaterials.Plasma * 1000) / 1000}</li>
+                </ul>
+            </li>
+        </ul>
+    </TabItem>
+</Tabs>
