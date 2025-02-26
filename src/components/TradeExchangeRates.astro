@@ -30,8 +30,6 @@ const cargoTradeGoodsDSM = YAML.parse(cargoTradeGoodsDSMFile, { logLevel: 'error
 const cargoTradeGoodsTFSCFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Catalog/Cargo/Freeport/tradegoods.yml`, 'utf8');
 const cargoTradeGoodsTFSC = YAML.parse(cargoTradeGoodsTFSCFile, { logLevel: 'error' });
 
-console.log(cargoTradeGoodsDSM.find(cargoProduct => cargoProduct.product == "TradeGoodScrap"));
-
 // Find each station's cargo dispensary.
 const dispensaryNCWL = cargoDispensers.find(dispenser => dispenser.id == "NovaBelraskaDispensary");
 const dispensaryGliess = cargoDispensers.find(dispenser => dispenser.id == "InterdyneDispensary");
@@ -69,7 +67,6 @@ for (const t of tradeGoods) {
 
         // Get price if available from dispensaries.
         if (Object.keys(dispensaryNCWL.startingInventory).includes(t.id) || Object.keys(dispensaryGliess.startingInventory).includes(t.id) || cargoTradeGoodsDSM.find(cargoProduct => cargoProduct.product == t.id) || cargoTradeGoodsTFSC.find(cargoProduct => cargoProduct.product == t.id)) {
-            // tradeGood.price = t.components.find(component => component.type == "StaticPrice").price;
             if (Object.keys(dispensaryNCWL.startingInventory).includes(t.id)) {
                 tradeGood.purchaseLocation.push("Port Vladzena");
                 tradeGood.price[0] = t.components.find(component => component.type == "StaticPrice").price;
@@ -85,7 +82,6 @@ for (const t of tradeGoods) {
             if (cargoTradeGoodsTFSC.find(cargoProduct => cargoProduct.product == t.id)) {
                 tradeGood.purchaseLocation.push("Freeport")
                 tradeGood.price.push(cargoTradeGoodsTFSC.find(cargoProduct => cargoProduct.product == t.id).cost);
-                // console.log(cargoTradeGoodsTFSC.find(cargoProduct => cargoProduct.product == t.id));
             }
         }
 

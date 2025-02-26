@@ -13,6 +13,24 @@ const projectilesShells = YAML.parse(fs.readFileSync(`${YAMLFolder}/_Crescent/En
 const projectilesCannonAmmo = YAML.parse(fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Objects/Ammunition/cannonammo.yml`, 'utf8'), { logLevel: 'error' });
 const projectilesOther = YAML.parse(fs.readFileSync(`${YAMLFolder}/Entities/Objects/Weapons/Guns/Projectiles/projectiles.yml`, 'utf8'), { logLevel: 'error' });
 
+/*
+function printProjectileLifetimes(projectileList: object) {
+    for (const projectile of projectileList) {
+        try {
+            const projectileLifetime = projectile.components.find(component => component.type == "TimedDespawn").lifetime;
+            console.log(`${projectile.id}: ${projectileLifetime}`);
+        } 
+        catch {
+            continue;
+        }
+    }
+}
+
+printProjectileLifetimes(projectilesShells);
+printProjectileLifetimes(projectilesCannonAmmo);
+printProjectileLifetimes(projectilesOther);
+*/
+
 // Manually defined in a JSON file because tracing back through various cartridges and magazines programmatically is nightmarish.
 const shipWeaponProjectiles = JSON.parse(fs.readFileSync(`./src/assets/data/ShipWeaponProjectiles.json`, 'utf8'));
 
