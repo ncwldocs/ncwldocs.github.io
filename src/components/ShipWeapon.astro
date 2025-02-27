@@ -59,7 +59,7 @@ const projectileFile = projectilesShells.find(projectile => projectile.id == pro
                      : projectilesCannonAmmo.find(projectile => projectile.id == projectileType) ? projectilesCannonAmmo 
                      : projectilesOther;
 const projectileEntry = projectileFile.find(projectile => projectile.id == projectileType);
-const projectileLifetime = recursiveComponentSearch(projectileEntry, projectileFile, "TimedDespawn").lifetime;
+const projectileLifetime = recursiveComponentSearch(projectileEntry, projectileFile, "TimedDespawn") ? recursiveComponentSearch(projectileEntry, projectileFile, "TimedDespawn").lifetime : 0;
 
 const weaponRange = weaponSpeed * projectileLifetime;
 ---
