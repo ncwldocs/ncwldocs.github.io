@@ -39,7 +39,7 @@ function recursiveComponentSearch(entity: object, entityFile: object, componentT
     let result;
     let currentSearch = entity;
     while (!result) {
-        if (currentSearch.components.find(component => component.type == componentType)) {
+        if ('components' in currentSearch && currentSearch.components.find(component => component.type == componentType)) {
             result = currentSearch.components.find(component => component.type == componentType);
         } else {
             currentSearch = entityFile.find(entity => entity.id == currentSearch.parent);
@@ -49,10 +49,9 @@ function recursiveComponentSearch(entity: object, entityFile: object, componentT
     return result;
 }
 
-const weaponFile = cannons.find(weapon => weapon.id == weaponID) ? cannons: turrets;
+const weaponFile = cannons.find(weapon => weapon.id == weaponID) ? cannons : turrets;
 const weaponEntry = weaponFile.find(weapon => weapon.id == weaponID);
 const weaponName = weaponEntry.name;
-console.log(`beginning weaponSpeed recursive search for:  ${weaponID}`);
 const weaponSpeed = recursiveComponentSearch(weaponEntry, weaponFile, "Gun").projectileSpeed;
 
 const projectileType = shipWeaponProjectiles[weaponID].projectile;
@@ -60,7 +59,6 @@ const projectileFile = projectilesShells.find(projectile => projectile.id == pro
                      : projectilesCannonAmmo.find(projectile => projectile.id == projectileType) ? projectilesCannonAmmo 
                      : projectilesOther;
 const projectileEntry = projectileFile.find(projectile => projectile.id == projectileType);
-console.log(`beginning projectileLifetime recursive search for:  ${projectileType}`);
 const projectileLifetime = recursiveComponentSearch(projectileEntry, projectileFile, "TimedDespawn").lifetime;
 
 const weaponRange = weaponSpeed * projectileLifetime;
