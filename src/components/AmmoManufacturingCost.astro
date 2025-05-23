@@ -1,14 +1,11 @@
 ---
-import fs from 'fs'
-import YAML from 'yaml'
+import { fetchYAML } from '@lib/fetch-yaml.js'
 
-const YAMLFolder = './src/assets/data/Hullrot/Resources/Prototypes';
+const ammoFactoryURL = 'Resources/Prototypes/_Crescent/Entities/Factory/factory.yml';
+const ammoFactoryList = await fetchYAML(ammoFactoryURL);
 
-const ammoFactoryFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Factory/factory.yml`, 'utf8');
-const ammoFactoryList = YAML.parse(ammoFactoryFile, { logLevel: 'error' });
-
-const recipeMunitionsFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Recipes/Factory/munitions.yml`, 'utf8');
-const recipeMunitionsList = YAML.parse(recipeMunitionsFile, { logLevel: 'error' });
+const recipeMunitionsFile = 'Resources/Prototypes/_Crescent/Entities/Recipes/Factory/munitions.yml';
+const recipeMunitionsList = await fetchYAML(recipeMunitionsFile);
 
 const ammoFactory = ammoFactoryList.find(factory => factory.id == "Factory120Fab");
 const ammoFactoryRecipes = ammoFactory.components.find(component => component.type == "Factory").recipes;
@@ -30,6 +27,7 @@ for (const recipe of ammoFactoryRecipes) {
 }
 
 ---
+
 <table>
     <thread>
         <tr>
