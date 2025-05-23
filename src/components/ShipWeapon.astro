@@ -4,7 +4,7 @@ import YAML from 'yaml'
 
 const { weaponID } = Astro.props;
 
-const YAMLFolder = './src/assets/data/Hullrot-YAML-Prototypes';
+const YAMLFolder = './src/assets/data/Hullrot/Resources/Prototypes';
 
 const cannons = YAML.parse(fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Structures/cannons.yml`, 'utf8'), { logLevel: 'error' });
 const turrets = YAML.parse(fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Structures/turrets.yml`, 'utf8'), { logLevel: 'error' });

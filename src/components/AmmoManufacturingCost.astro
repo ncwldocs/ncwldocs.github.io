@@ -2,7 +2,7 @@
 import fs from 'fs'
 import YAML from 'yaml'
 
-const YAMLFolder = './src/assets/data/Hullrot-YAML-Prototypes';
+const YAMLFolder = './src/assets/data/Hullrot/Resources/Prototypes';
 
 const ammoFactoryFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Factory/factory.yml`, 'utf8');
 const ammoFactoryList = YAML.parse(ammoFactoryFile, { logLevel: 'error' });
