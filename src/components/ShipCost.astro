@@ -1,21 +1,18 @@
 ---
-import fs from 'fs'
-import YAML from 'yaml'
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { fetchYAML } from '@lib/fetch-yaml.js'
 
 const { shipName } = Astro.props;
 
-const YAMLFolder = './src/assets/data/Hullrot/Resources/Prototypes';
+const recipeLPCsURL = 'Resources/Prototypes/_Crescent/Entities/Recipes/Lathes/shiplpcs.yml';
+const recipeShipComponentsURL = 'Resources/Prototypes/_Crescent/Entities/Recipes/Lathes/shipcomponents.yml';
 
-const recipeLPCsFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Recipes/Lathes/shiplpcs.yml`, 'utf8');
-const recipeShipComponentsFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Recipes/Lathes/shipcomponents.yml`, 'utf8');
-
-const recipeLPCs = YAML.parse(recipeLPCsFile);
-const recipeShipComponents = YAML.parse(recipeShipComponentsFile);
+const recipeLPCs = await fetchYAML(recipeLPCsURL);
+const recipeShipComponents = await fetchYAML(recipeShipComponentsURL);
 
 // each unit of steel, silver, gold, plasma contains 100 of said material
 // each ship component contain 500 of said material
-// hard-coded because it's in four different places
+// hard-coded because it's in four different files but it'd be nice to do this programmatically in the future
 const materialDivisor = 100;
 const shipComponentDivisor = 500;
 

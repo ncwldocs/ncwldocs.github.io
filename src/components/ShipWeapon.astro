@@ -1,35 +1,16 @@
 ---
+import { fetchYAML } from '@lib/fetch-yaml.js'
 import fs from 'fs'
-import YAML from 'yaml'
 
 const { weaponID } = Astro.props;
 
-const YAMLFolder = './src/assets/data/Hullrot/Resources/Prototypes';
+const cannons = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Structures/cannons.yml');
+const turrets = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Structures/turrets.yml');
 
-const cannons = YAML.parse(fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Structures/cannons.yml`, 'utf8'), { logLevel: 'error' });
-const turrets = YAML.parse(fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Structures/turrets.yml`, 'utf8'), { logLevel: 'error' });
+const projectilesShells = await fetchYAML('Resources/Prototypes/_Crescent/Entities/SpaceArtillery/shells.yml');
+const projectilesCannonAmmo = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Objects/Ammunition/cannonammo.yml');
+const projectilesOther = await fetchYAML('Resources/Prototypes/Entities/Objects/Weapons/Guns/Projectiles/projectiles.yml');
 
-const projectilesShells = YAML.parse(fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/SpaceArtillery/shells.yml`, 'utf8'), { logLevel: 'error' });
-const projectilesCannonAmmo = YAML.parse(fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Objects/Ammunition/cannonammo.yml`, 'utf8'), { logLevel: 'error' });
-const projectilesOther = YAML.parse(fs.readFileSync(`${YAMLFolder}/Entities/Objects/Weapons/Guns/Projectiles/projectiles.yml`, 'utf8'), { logLevel: 'error' });
-
-/*
-function printProjectileLifetimes(projectileList: object) {
-    for (const projectile of projectileList) {
-        try {
-            const projectileLifetime = projectile.components.find(component => component.type == "TimedDespawn").lifetime;
-            console.log(`${projectile.id}: ${projectileLifetime}`);
-        } 
-        catch {
-            continue;
-        }
-    }
-}
-
-printProjectileLifetimes(projectilesShells);
-printProjectileLifetimes(projectilesCannonAmmo);
-printProjectileLifetimes(projectilesOther);
-*/
 
 // Manually defined in a JSON file because tracing back through various cartridges and magazines programmatically is nightmarish.
 const shipWeaponProjectiles = JSON.parse(fs.readFileSync(`./src/assets/data/ShipWeaponProjectiles.json`, 'utf8'));
