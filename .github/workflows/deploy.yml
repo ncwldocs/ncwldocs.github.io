@@ -4,7 +4,7 @@ on:
   # Trigger the workflow every time you push to the `main` branch
   # Using a different branch name? Replace `main` with your branch’s name
   push:
-    branches: [ main ]
+    branches: [ ee-rebase ]
   # Run this workflow on a schedule using cron
   schedule:
     - cron: '12 13 * * 6'
