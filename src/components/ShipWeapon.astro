@@ -30,10 +30,16 @@ function recursiveComponentSearch(entity: object, entityFile: object, componentT
     return result;
 }
 
+// console.log(weaponID);
 const weaponFile = cannons.find(weapon => weapon.id == weaponID) ? cannons : turrets;
+// console.log(weaponFile);
 const weaponEntry = weaponFile.find(weapon => weapon.id == weaponID);
+// console.log(weaponEntry);
 const weaponName = weaponEntry.name;
 const weaponSpeed = recursiveComponentSearch(weaponEntry, weaponFile, "Gun").projectileSpeed;
+
+console.log(shipWeaponProjectiles[weaponID]);
+console.log(shipWeaponProjectiles[weaponID].projectile);
 
 const projectileType = shipWeaponProjectiles[weaponID].projectile;
 const projectileFile = projectilesShells.find(projectile => projectile.id == projectileType) ? projectilesShells

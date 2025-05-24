@@ -14,7 +14,7 @@
 "ShuttleGunMissileRack": {
     "projectile": "BulletGrenadeBaton"
     },
-"SHISlugthrowerTurret": {
+"SlugthrowerCannon": {
     "projectile": "BulletMachineGunArmorPiercing"
     },
 "HardlineBeamPulser": {
@@ -32,19 +32,19 @@
 "BaseWeaponTurretPDT": {
     "projectile": "PDTBullet"
     },
-"WeaponTurretPDTNCWL": {
+"WeaponTurretPDT": {
     "projectile": "PDTBullet"
     },
-"WeaponTurretVulcanNCWL": {
+"WeaponTurretVulcan": {
     "projectile": "BulletMachineGunVulcan"
     },
-"WeaponTurretSwarmerNCWL": {
+"BaseWeaponTurretSwarmer": {
     "projectile": "SwarmerMissile"
     },
-"WeaponTurretMortarNCWL": {
+"WeaponTurretMortar": {
     "projectile": "BulletMachineGunMortarTurret"
     },
-"BaseWeaponTurretNeedlerNCWL": {
+"WeaponTurretNeedler": {
     "projectile": "NeedlerBase"
     },
 "BaseWeaponTurretGargoyle": {
@@ -56,7 +56,7 @@
 "BaseWeaponTurretBattlemortar": {
     "projectile": "BattlemortarProjectile"
     },
-"BaseWeaponTurretSmartbombNCWL": {
+"BaseWeaponTurretSmartbomb": {
     "projectile": "SmartBombBase"
 }
 }
