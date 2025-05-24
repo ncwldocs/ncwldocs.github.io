@@ -4,7 +4,7 @@ on:
   # Trigger the workflow every time you push to the `main` branch
   # Using a different branch name? Replace `main` with your branch’s name
   push:
-    branches: [ main ]
+    branches: [ ee-rebase ]
   # Run this workflow on a schedule using cron
   schedule:
     - cron: '12 13 * * 6'
@@ -23,12 +23,6 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Init submodules
-        run: | 
-          git submodule init
-      - name: Update submodules
-        run: |
-          git submodule update --recursive --remote 
       - name: Install, build, and upload your site
         uses: withastro/action@v2
         # with:
