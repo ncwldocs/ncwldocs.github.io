@@ -1,19 +1,12 @@
 ---
-// import type { StarlightRouteData } from '@astrojs/starlight/route-data';
 import Default from '@astrojs/starlight/components/MarkdownContent.astro';
 
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 
-// console.log(Astro.locals.starlightRoute.id);
-
 const { data } = Astro.locals.starlightRoute.entry;
 
-// console.log(data);
-
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/shipyard/*.{jpeg,jpg,png,gif}');
-
-// const isShipyard = Astro.url.pathname.includes('shipyard');
 
 const isShipyard = Astro.locals.starlightRoute.id.includes('shipyard');
 

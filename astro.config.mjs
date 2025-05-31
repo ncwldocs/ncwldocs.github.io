@@ -33,6 +33,7 @@ export default defineConfig({
 			],
 			components: {
 				MarkdownContent: './src/components/MarkdownContent.astro',
+				Head: './src/components/Head.astro',
 			},
 			customCss: ['./src/styles/custom.css'],
 			editLink: {
