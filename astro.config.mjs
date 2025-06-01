@@ -8,6 +8,9 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'NCWL Docs',
+			logo: {
+				src: './src/assets/images/ncwl-logo.svg',
+			},
 			sidebar: [
 				{
 					label: "Guides",
