@@ -1,6 +1,6 @@
 import YAML from 'yaml'
 
-const repoURL = 'https://raw.githubusercontent.com/MLGTASTICa/Hullrot/refs/heads/master/';
+const repoURL = 'https://raw.githubusercontent.com/Sector-Crescent/Hullrot/refs/heads/master/';
 
 export async function fetchYAML(filePath) {
 
