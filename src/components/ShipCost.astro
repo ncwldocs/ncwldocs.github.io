@@ -4,6 +4,15 @@ import { fetchYAML } from '@lib/fetch-yaml.js'
 
 const { shipName } = Astro.props;
 
+/*******************
+
+TEMPORARILY DISABLED
+
+Ship cost calculations are disabled until printable ship LPCs are added back into the game.
+
+********************/
+
+/*
 const recipeLPCsURL = 'Resources/Prototypes/_Crescent/Entities/Recipes/Lathes/shiplpcs.yml';
 const recipeShipComponentsURL = 'Resources/Prototypes/_Crescent/Entities/Recipes/Lathes/shipcomponents.yml';
 
@@ -15,6 +24,8 @@ const recipeShipComponents = await fetchYAML(recipeShipComponentsURL);
 // hard-coded because it's in four different files but it'd be nice to do this programmatically in the future
 const materialDivisor = 100;
 const shipComponentDivisor = 500;
+
+console.log(recipeLPCs);
 
 const shipLPCEntry = recipeLPCs.find(ship => ship.id.includes(shipName));
 
@@ -48,8 +59,11 @@ Object.keys(shipElectronicsEntry.materials).forEach(key => {
 Object.keys(shipHullEntry.materials).forEach(key => {
     costLPCMaterials[key] += (shipHullEntry.materials[key] * costLPC.ShipHull) / materialDivisor;
 })
-
+*/
 ---
+<p><em>Ship cost calculations are temporarily disabled until printable ship LPCs are re-added to Hullrot.</em></p>
+
+{ /* 
 <p><i>The NCWL shipyard manufactorium has an efficiency penalty of {Math.round((NCWLShipyardMultiplier - 1) * 100000) / 1000}%.</i></p>
 
 <Tabs>
@@ -84,3 +98,4 @@ Object.keys(shipHullEntry.materials).forEach(key => {
         </ul>
     </TabItem>
 </Tabs>
+*/ }
