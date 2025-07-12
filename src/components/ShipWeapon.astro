@@ -46,4 +46,13 @@ const projectileLifetime = recursiveComponentSearch(projectileEntry, projectileF
 
 const weaponRange = weaponSpeed * projectileLifetime;
 ---
-<b>{weaponName}</b> <sup><i>{weaponRange}m</i></sup>
+<span class="weapon-name">{weaponName}</span> <sup class="weapon-range">{weaponRange}m</sup>
+
+<style>
+    .weapon-name {
+        font-weight: bold;
+    }
+    .weapon-range {
+        font-style: italic;
+    }
+</style>

@@ -1,25 +1,16 @@
 ---
 title: Rapier
 ---
-import ShipCost from '@components/ShipCost.astro';
+import ShipManufacturingCost from '@components/ShipManufacturingCost.astro';
 import ShipWeapon from '@components/ShipWeapon.astro';
 
-> *Originally a Wasp-class Imperial mining pod, the Rapier has gotten a second lease on life with thruster overclocking, a brand-new engine block, and two heatseeking torpedoes to replace its mining beam lasers. Used primarily in harassment raids and precision strikes, the Rapier doesn't tend to survive for long on its own.*
+> *A glass coffin to die in. The Rapier-class is a cored-out mining drone originally rated for firing depth charges into large chunks of asteroid rock, later repurposed into a penal torpedo bomber to stuff misbehaving pilots into. It'll kill. Whether you survive after is another matter.*
 
 
 ## Armaments
 
 * Fixed
     * 2x <ShipWeapon weaponID="ShuttleGunTorpedo" />
-
-
-## Modules
-
-* Module A: Fire Torpedoes 
-* Module B: Blank 
-* Module C: Blank 
-* Module D: Blank 
-* Module E: Blank
 
 
 ## Notes
@@ -29,4 +20,4 @@ Should be used only for bombing runs against large or slow-moving targets. No de
 
 ## Manufacturing Cost
 
-<ShipCost shipName={frontmatter.title} />
+<ShipManufacturingCost shipName={frontmatter.title} />

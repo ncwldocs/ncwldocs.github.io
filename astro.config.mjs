@@ -27,10 +27,6 @@ export default defineConfig({
 							label: "Civilian",
 							autogenerate: { directory: 'shipyard/Civilian' },
 						},
-						{
-							label: "Removed",
-							autogenerate: { directory: 'shipyard/Removed' },
-						}
 					]
 				},
 			],

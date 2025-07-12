@@ -1,26 +1,17 @@
 ---
 title: Khopesh
 ---
-import ShipCost from '@components/ShipCost.astro';
+import ShipManufacturingCost from '@components/ShipManufacturingCost.astro';
 import ShipWeapon from '@components/ShipWeapon.astro';
 
 
-> *An interdiction ultralight strikeshuttle - comes with non-explosive, high rate of fire Vulcan turrets.*
+> *An anti-fighter variant of the Broadsword. Lighter, more nimble, but considerably more fragile than it's ultralight bomber cousin. Excellent longevity in it's ability to lay down suppressing fire, but suffers against anything larger than it's own weight class.*
 
 
 ## Armaments
 
 * Fixed
   * 2x <ShipWeapon weaponID="NTVulcanTurret" />
-
-
-## Modules
-
-* Module A: Fire Vulcans 
-* Module B: Vulcan Safeties On 
-* Module C: Vulcan Safeties Off 
-* Module D: BLANK 
-* Module E: BLANK
 
 
 ## Notes
@@ -30,4 +21,4 @@ Primarily useful against other ultralights or very lightly-armed ships. Low surv
 
 ## Manufacturing Cost
 
-<ShipCost shipName={frontmatter.title} />
+<ShipManufacturingCost shipName={frontmatter.title} />
