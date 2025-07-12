@@ -8,6 +8,9 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'NCWL Docs',
+			logo: {
+				src: './src/assets/images/ncwl-logo.svg',
+			},
 			sidebar: [
 				{
 					label: "Guides",
@@ -24,15 +27,12 @@ export default defineConfig({
 							label: "Civilian",
 							autogenerate: { directory: 'shipyard/Civilian' },
 						},
-						{
-							label: "Removed",
-							autogenerate: { directory: 'shipyard/Removed' },
-						}
 					]
 				},
 			],
 			components: {
 				MarkdownContent: './src/components/MarkdownContent.astro',
+				Head: './src/components/Head.astro',
 			},
 			customCss: ['./src/styles/custom.css'],
 			editLink: {

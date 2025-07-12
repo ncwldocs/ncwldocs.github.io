@@ -1,0 +1,8 @@
+---
+import Default from '@astrojs/starlight/components/Head.astro';
+import NCWLLogo from '@assets/images/ncwl-logo.svg';
+
+---
+
+<Default><slot /></Default>
+<meta property="og:image" content={NCWLLogo.src}>

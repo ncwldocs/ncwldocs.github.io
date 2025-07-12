@@ -1,7 +1,5 @@
 ---
-import fs from 'fs'
-import YAML from 'yaml'
-
+import { fetchYAML } from '@lib/fetch-yaml.js'
 
 // Utility function to translate "SpaceCash2000" into simply "2000".
 function getSpaceCash(string: string) {
@@ -9,26 +7,18 @@ function getSpaceCash(string: string) {
     return splitString[1];
 }
 
-const YAMLFolder = './src/assets/data/Hullrot-YAML-Prototypes';
-
 // YML file containing starting inventory of trade dispensaries.
-const cargoDispensersFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Catalog/VendingMachines/Inventories/cargodispensaries.yml`, 'utf8');
-const cargoDispensers = YAML.parse(cargoDispensersFile, { logLevel: 'error' });
+const cargoDispensers = await fetchYAML('Resources/Prototypes/_Crescent/Catalog/VendingMachines/Inventories/cargodispensaries.yml');
 
 // YML file containing Deed Console and cargo Turn-In Chutes. 
-const tradeDispensersFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Structures/dispensers.yml`, 'utf8');
-const tradeDispensers = YAML.parse(tradeDispensersFile, { logLevel: 'error' });
+const tradeDispensers = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Structures/dispensers.yml');
 
 // YML file containing trade goods.
-const tradeGoodsFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Entities/Objects/Misc/trade.yml`, 'utf8');
-const tradeGoods = YAML.parse(tradeGoodsFile, { logLevel: 'error' });
+const tradeGoods = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Objects/Misc/trade.yml');
 
 // YML files containing trade goods available at cargo consoles.
-const cargoTradeGoodsDSMFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Catalog/Cargo/Surezai/tradegoods.yml`, 'utf8');
-const cargoTradeGoodsDSM = YAML.parse(cargoTradeGoodsDSMFile, { logLevel: 'error' });
-
-const cargoTradeGoodsTFSCFile = fs.readFileSync(`${YAMLFolder}/_Crescent/Catalog/Cargo/Freeport/tradegoods.yml`, 'utf8');
-const cargoTradeGoodsTFSC = YAML.parse(cargoTradeGoodsTFSCFile, { logLevel: 'error' });
+const cargoTradeGoodsDSM = await fetchYAML('Resources/Prototypes/_Crescent/Catalog/Cargo/Surezai/tradegoods.yml');
+const cargoTradeGoodsTFSC = await fetchYAML('Resources/Prototypes/_Crescent/Catalog/Cargo/Freeport/tradegoods.yml');
 
 // Find each station's cargo dispensary.
 const dispensaryNCWL = cargoDispensers.find(dispenser => dispenser.id == "NovaBelraskaDispensary");

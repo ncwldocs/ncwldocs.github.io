@@ -1,7 +1,7 @@
 ---
 title: Cherenzikov
 ---
-import ShipCost from '@components/ShipCost.astro';
+import ShipManufacturingCost from '@components/ShipManufacturingCost.astro';
 import ShipWeapon from '@components/ShipWeapon.astro';
 
 
@@ -11,10 +11,10 @@ import ShipWeapon from '@components/ShipWeapon.astro';
 ## Armaments
 
 * Fixed
-    * 1x <ShipWeapon weaponID="SHISlugthrowerTurret" />
+    * 1x <ShipWeapon weaponID="SlugthrowerCannon" />
     * 1x <ShipWeapon weaponID="ShuttleGunMissileRack" />
 * Turret
-    * 9x <ShipWeapon weaponID="WeaponTurretVulcanNCWL" />
+    * 9x <ShipWeapon weaponID="WeaponTurretVulcan" />
 
 
 ## Notes
@@ -24,4 +24,4 @@ Primarily intended as an armed mining or trading vessel. Contains suits, small a
 
 ## Manufacturing Cost
 
-<ShipCost shipName={frontmatter.title} />
+<ShipManufacturingCost shipName={frontmatter.title} />

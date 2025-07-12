@@ -1,11 +1,11 @@
 ---
 title: Ivarod
 ---
-import ShipCost from '@components/ShipCost.astro';
+import ShipManufacturingCost from '@components/ShipManufacturingCost.astro';
 import ShipWeapon from '@components/ShipWeapon.astro';
 
 
-> *A steady mining barge converted into an overdriven light destroyer, the Ivarod's mining depth charges were ripped out in favor of the tried-and-tested Type-99 artillery hardpoints. Welded-on external gun mounts further allow for more offensive and defensive capability, with a steady spread of low-caliber point defense near the back and destructive rocket pods and autoguns near the front. Outfitted for long-term deployments, the Ivarod excels at sideliner and escort duty, assisting larger allies within a fleet, although it struggles on its own against larger targets.*
+> *A low-tech bruiser frigate in encumbering plastitanium. Most of the internal electronics work has been torn out in favor of more armor plating and more gun mounts, leaving little space for a shield generator. Ivarod-classes are commonly deployed as fleet anchors in patrol squadrons or as frontliners in large-scale engagements, equipped with a variety of explosive ballistics to make short work of a variety of weight classes.*
 
 
 ## Armaments
@@ -13,9 +13,9 @@ import ShipWeapon from '@components/ShipWeapon.astro';
 * Fixed
     * 2x <ShipWeapon weaponID="Type99Artillery" />
 * Turret
-    * 6x <ShipWeapon weaponID="WeaponTurretPDTNCWL" />
-    * 6x <ShipWeapon weaponID="BaseWeaponTurretNeedlerNCWL" />
-    * 2x <ShipWeapon weaponID="WeaponTurretSwarmerNCWL" />
+    * 6x <ShipWeapon weaponID="WeaponTurretPDT" />
+    * 6x <ShipWeapon weaponID="WeaponTurretNeedler" />
+    * 2x <ShipWeapon weaponID="BaseWeaponTurretSwarmer" />
 
 
 ## Modules
@@ -38,4 +38,4 @@ Capable of operating as a well-armed logistics vessel or an artillery ship. The 
 
 ## Manufacturing Cost
 
-<ShipCost shipName={frontmatter.title} />
+<ShipManufacturingCost shipName={frontmatter.title} />

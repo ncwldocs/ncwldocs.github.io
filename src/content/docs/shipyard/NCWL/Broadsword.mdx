@@ -1,25 +1,17 @@
 ---
 title: Broadsword
 ---
-import ShipCost from '@components/ShipCost.astro';
+import ShipManufacturingCost from '@components/ShipManufacturingCost.astro';
 import ShipWeapon from '@components/ShipWeapon.astro';
 
 
-> *An ultralight bomber strikeshuttle developed as a cost-effective, quick-response solution to the anti-piracy campaign. A subshuttle of the NCWL Zhipov strikeshuttle carrier.*
+> *A common fighter pattern deployed everywhere in Communard space. A mainstay for station defense and the most common design aboard communard carriers.*
 
 
 ## Armaments
 
 * Fixed
   * 2x <ShipWeapon weaponID="ShuttleGunKurosawa" />
-
-## Modules
-
-* Module A: Fire Rockets 
-* Module B: Blank
-* Module C: Blank
-* Module D: Blank 
-* Module E: Blank
 
 
 ## Notes
@@ -29,4 +21,4 @@ Should be used only for bombing runs against large or slow-moving targets. No de
 
 ## Manufacturing Cost
 
-<ShipCost shipName={frontmatter.title} />
+<ShipManufacturingCost shipName={frontmatter.title} />
