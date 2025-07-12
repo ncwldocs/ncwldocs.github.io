@@ -7,6 +7,7 @@ import { file } from 'astro/loaders';
 export const collections = {
 	docs: defineCollection({ 
 		loader: docsLoader(),
+		schema: docsSchema(),
 	}),
 	shipWeapons: defineCollection({
 		loader: file("src/assets/data/ShipWeaponProjectiles.json"),
