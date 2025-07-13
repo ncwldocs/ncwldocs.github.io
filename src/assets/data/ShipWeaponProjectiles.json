@@ -26,6 +26,9 @@
 "AcceleratorCannon": {
     "projectile": "BulletRailHighExplosive"
     },
+"FlakCannonTurret": {
+    "projectile": "FlakProjectile"
+    },
 "NTVulcanTurret": {
     "projectile": "BulletMachineGunVulcan"
     },
@@ -40,6 +43,9 @@
     },
 "BaseWeaponTurretSwarmer": {
     "projectile": "SwarmerMissile"
+    },
+"BaseWeaponTurretMagwell": {
+    "projectile": "TorpedoBase"
     },
 "WeaponTurretMortar": {
     "projectile": "BulletMachineGunMortarTurret"
@@ -58,5 +64,5 @@
     },
 "BaseWeaponTurretSmartbomb": {
     "projectile": "SmartBombBase"
-}
+    }
 }
