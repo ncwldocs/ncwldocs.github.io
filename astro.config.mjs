@@ -3,8 +3,8 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://WreakHavocOnTheMiddleClass.github.io',
-	base: 'ncwl-docs',
+	site: 'https://ncwldocs.github.io',
+	base: '/',
 	integrations: [
 		starlight({
 			title: 'NCWL Docs',
@@ -36,7 +36,7 @@ export default defineConfig({
 			},
 			customCss: ['./src/styles/custom.css'],
 			editLink: {
-				baseUrl: 'https://github.com/WreakHavocOnTheMiddleClass/ncwl-docs/edit/main/',
+				baseUrl: 'https://github.com/ncwldocs/ncwl-docs/edit/main/',
 			},
 		}),
 	],
