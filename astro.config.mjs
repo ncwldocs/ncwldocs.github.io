@@ -35,7 +35,7 @@ export default defineConfig({
 			},
 			customCss: ['./src/styles/custom.css'],
 			editLink: {
-				baseUrl: 'https://github.com/ncwldocs/ncwl-docs/edit/main/',
+				baseUrl: 'https://github.com/ncwldocs/ncwldocs.github.io/edit/main/',
 			},
 		}),
 	],
