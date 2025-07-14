@@ -4,7 +4,6 @@ import starlight from '@astrojs/starlight';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://ncwldocs.github.io',
-	base: '/',
 	integrations: [
 		starlight({
 			title: 'NCWL Docs',
