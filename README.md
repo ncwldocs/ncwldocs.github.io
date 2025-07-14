@@ -4,7 +4,6 @@ A guide to the New Crescent Worker's League faction of Hullrot, a sci-fi rolepla
 
 * [Hullrot Github Repo](https://github.com/MLGTASTICa/Hullrot)
 * [Hullrot Discord](https://discord.gg/e6n9n9xgHN)
-* [Hullrot Wiki](https://sector-crescent.fandom.com/wiki/Sector_Crescent_Wiki)
 * [Space Station 14](https://spacestation14.com/)
 
 ## Automation
