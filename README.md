@@ -2,13 +2,13 @@
 
 A guide to the New Crescent Worker's League faction of Hullrot, a sci-fi roleplaying game based on Space Station 14.
 
-* [Hullrot Github Repo](https://github.com/MLGTASTICa/Hullrot)
+* [Hullrot Github Repo](https://github.com/Sector-Crescent/Hullrot)
 * [Hullrot Discord](https://discord.gg/e6n9n9xgHN)
 * [Space Station 14](https://spacestation14.com/)
 
 ## Automation
 
-Portions of this guide pull game data from the [Hullrot](https://github.com/MLGTASTICa/Hullrot) repo automatically. See many of the components in [src/components](src/components) for an example of this.
+Portions of this guide pull game data from the [Hullrot](https://github.com/Sector-Crescent/Hullrot) repo automatically. See many of the components in [src/components](src/components) for an example of this.
 
 ## Contributing
 
