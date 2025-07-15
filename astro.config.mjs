@@ -16,6 +16,10 @@ export default defineConfig({
 					autogenerate: { directory: 'guides' },
 				},
 				{
+					label: "Lore",
+					autogenerate: { directory: 'lore' },
+				},
+				{
 					label: 'Shipyard',
 					items: [
 						{
