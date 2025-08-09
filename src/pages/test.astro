@@ -1,0 +1,54 @@
+---
+import fs from 'fs'
+import YAML from 'yaml'
+
+import { fetchYAML } from '@lib/fetch-yaml.js'
+
+
+const cannonFile = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Structures/cannons.yml');
+const turretFile = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Structures/turrets.yml');
+
+const hardpointFile = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Structures/Machines/Computers/hardpoints.yml');
+const hardpointList = [];
+
+for (const prototype of hardpointFile) {
+  hardpointList.push(prototype.id);
+}
+
+const lodkaMapFile = await fetchYAML('Resources/Maps/_Crescent/Shuttles/NCWL/lodka.yml');
+
+const lodkaHardpointList = []
+const lodkaWeaponList = []
+
+for (const hardpointType of hardpointList) {
+  const hardpointPrototype = lodkaMapFile.entities.find(entity => entity.proto == hardpointType);
+  for (const entity of hardpointPrototype.entities) {
+    lodkaHardpointList.push(entity)
+  }
+}
+
+const ship = fs.readFileSync(`./src/assets/data/lodka.yml`, 'utf8')
+const shipYAML = YAML.parse(ship, { logLevel: 'error' });
+
+// console.log(shipYAML);
+
+const hardpointProto = shipYAML.entities.find(entity => entity.proto == 'AAAHardpointSmallBallistic')
+
+const vulcanProto = shipYAML.entities.find(entity => entity.proto == 'WeaponTurretVulcan')
+
+console.log(hardpointProto);
+
+console.log(vulcanProto);
+
+for (const entity of hardpointProto.entities) {
+  console.log(entity.components)
+}
+
+for (const entity of vulcanProto.entities) {
+  console.log(entity.components)
+}
+
+// console.log(hardpointProto.entities);
+
+// console.log(vulcanProto.entities);
+---
