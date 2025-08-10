@@ -4,12 +4,13 @@ import fs from 'fs'
 
 const { weaponID } = Astro.props;
 
-const cannons = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Structures/cannons.yml');
-const turrets = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Structures/turrets.yml');
+const cannons = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Shipguns/Guns/fixedpoints.yml');
+const turrets = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Shipguns/Guns/turrets.yml');
 
-const projectilesShells = await fetchYAML('Resources/Prototypes/_Crescent/Entities/SpaceArtillery/shells.yml');
-const projectilesCannonAmmo = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Objects/Ammunition/cannonammo.yml');
-const projectilesOther = await fetchYAML('Resources/Prototypes/Entities/Objects/Weapons/Guns/Projectiles/projectiles.yml');
+const shipgunCartridges = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Shipguns/Bullets/cartridges.yml');
+const shipgunAmmo = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Shipguns/Bullets/ammo.yml');
+const shipgunProjectiles = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Shipguns/Bullets/projectiles.yml');
+const basicProjectiles = await fetchYAML('Resources/Prototypes/Entities/Objects/Weapons/Guns/Projectiles/projectiles.yml');
 
 
 // Manually defined in a JSON file because tracing back through various cartridges and magazines programmatically is nightmarish.
@@ -38,9 +39,10 @@ const weaponName = weaponEntry.name;
 const weaponSpeed = recursiveComponentSearch(weaponEntry, weaponFile, "Gun").projectileSpeed;
 
 const projectileType = shipWeaponProjectiles[weaponID].projectile;
-const projectileFile = projectilesShells.find(projectile => projectile.id == projectileType) ? projectilesShells
-                     : projectilesCannonAmmo.find(projectile => projectile.id == projectileType) ? projectilesCannonAmmo 
-                     : projectilesOther;
+const projectileFile = shipgunCartridges.find(projectile => projectile.id == projectileType) ? shipgunCartridges
+                     : shipgunAmmo.find(projectile => projectile.id == projectileType) ? shipgunAmmo 
+                     : shipgunProjectiles.find(projectile => projectile.id == projectileType) ? shipgunProjectiles 
+                     : basicProjectiles;
 const projectileEntry = projectileFile.find(projectile => projectile.id == projectileType);
 const projectileLifetime = recursiveComponentSearch(projectileEntry, projectileFile, "TimedDespawn").lifetime;
 

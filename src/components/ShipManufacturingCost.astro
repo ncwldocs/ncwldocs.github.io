@@ -4,16 +4,7 @@ import { fetchYAML } from '@lib/fetch-yaml.js'
 
 const { shipName } = Astro.props;
 
-/*******************
-
-TEMPORARILY DISABLED
-
-Ship cost calculations are disabled until printable ship LPCs are added back into the game.
-
-********************/
-
-/*
-const recipeLPCsURL = 'Resources/Prototypes/_Crescent/Entities/Recipes/Lathes/shiplpcs.yml';
+const recipeLPCsURL = 'Resources/Prototypes/_Crescent/Entities/Recipes/Lathes/communardcrafts.yml';
 const recipeShipComponentsURL = 'Resources/Prototypes/_Crescent/Entities/Recipes/Lathes/shipcomponents.yml';
 
 const recipeLPCs = await fetchYAML(recipeLPCsURL);
@@ -25,7 +16,7 @@ const recipeShipComponents = await fetchYAML(recipeShipComponentsURL);
 const materialDivisor = 100;
 const shipComponentDivisor = 500;
 
-console.log(recipeLPCs);
+// console.log(recipeLPCs);
 
 const shipLPCEntry = recipeLPCs.find(ship => ship.id.includes(shipName));
 
@@ -59,12 +50,26 @@ Object.keys(shipElectronicsEntry.materials).forEach(key => {
 Object.keys(shipHullEntry.materials).forEach(key => {
     costLPCMaterials[key] += (shipHullEntry.materials[key] * costLPC.ShipHull) / materialDivisor;
 })
-*/
----
-<p><em>Ship cost calculations are temporarily disabled until printable ship LPCs are re-added to Hullrot.</em></p>
 
-{ /* 
-<p><i>The NCWL shipyard manufactorium has an efficiency penalty of {Math.round((NCWLShipyardMultiplier - 1) * 100000) / 1000}%.</i></p>
+---
+
+<ul>
+    <li><strong>Engine Components</strong>: {costLPC.StarshipEngineComponents}</li>
+    <li><strong>Electronics Components</strong>: {costLPC.ShipComponents}</li>
+    <li><strong>Hull Components</strong>: {costLPC.ShipHull}</li>
+    <li><strong>Total Materials: </strong>
+        <ul>
+            <li>Steel: {Math.round(costLPCMaterials.Steel * 1000) / 1000}</li>
+            <li>Silver: {Math.round(costLPCMaterials.Silver * 1000) / 1000}</li>
+            <li>Gold: {Math.round(costLPCMaterials.Gold * 1000) / 1000}</li>
+            <li>Plasma: {Math.round(costLPCMaterials.Plasma * 1000) / 1000}</li>
+        </ul>
+    </li>
+</ul>
+
+
+{/* commenting out below section until it's confirmed the shipyard manufactorium still has a penalty */}
+{/* <p><i>The NCWL shipyard manufactorium has an efficiency penalty of {Math.round((NCWLShipyardMultiplier - 1) * 100000) / 1000}%.</i></p>
 
 <Tabs>
     <TabItem label="NCWL Shipyard Values">
