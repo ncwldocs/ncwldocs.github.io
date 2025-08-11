@@ -1,0 +1,61 @@
+---
+import { fetchYAML } from '@lib/fetch-yaml.js'
+
+
+const fixedWeaponsFile = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Shipguns/Guns/fixedpoints.yml');
+const turretWeaponsFile = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Shipguns/Guns/turrets.yml');
+const hardpointFile = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Structures/Machines/Computers/hardpoints.yml');
+
+// lodka for testing
+const shipFile = await fetchYAML('Resources/Maps/_Crescent/Shuttles/NCWL/lodka.yml');
+
+const shipHardpointList = [];
+const shipWeaponList = [];
+const shipWeaponFixedList = [];
+const shipWeaponTurretList = [];
+
+// build list of hardpoints
+for (const prototype of hardpointFile) {
+  const hardpointPrototype = shipFile.entities.find((entity: { proto: string; }) => entity.proto == prototype.id);
+  if (hardpointPrototype) {
+    shipHardpointList.push(hardpointPrototype);
+  }
+}
+
+// build list of hardpoints
+for (const prototype of fixedWeaponsFile) {
+    const weaponPrototype = shipFile.entities.find((entity: { proto: string; }) => entity.proto == prototype.id);
+    if (weaponPrototype) {
+        shipWeaponList.push(weaponPrototype)
+    }
+}
+
+for (const prototype of turretWeaponsFile) {
+    const weaponPrototype = shipFile.entities.find((entity: { proto: string; }) => entity.proto == prototype.id);
+    if (weaponPrototype) {
+        shipWeaponList.push(weaponPrototype)
+    }
+}
+
+for (const hardpoint of shipHardpointList) {
+    for (const hardpointEntity of hardpoint.entities) {
+        const hardpointPosition = hardpointEntity.components.find((component: { type: string; }) => component.type == 'Transform').pos;
+        for (const weapon of shipWeaponList) {
+            for (const weaponEntity of weapon.entities) {
+                const weaponPosition = weaponEntity.components.find((component: { type: string; }) => component.type == 'Transform').pos;
+                if (weaponPosition == hardpointPosition) {
+                    if (hardpoint.proto.includes('Fixed')) {
+                        shipWeaponFixedList.push(weapon.proto);
+                    } else {
+                        shipWeaponTurretList.push(weapon.proto);
+                    }
+                }
+            }
+        }
+    }
+}
+
+console.log(shipWeaponFixedList);
+console.log(shipWeaponTurretList);
+
+---

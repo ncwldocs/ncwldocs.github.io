@@ -3,18 +3,13 @@ title: Hind
 description: A low-tech backliner and escort corvette. The Hind first saw life as a mercenary vessel of Pang Tai design, the patent of which would later be bought out by the Homeguard Foundries and converted into the Hind. The heavy spinal artillery and cruise missile systems allow it to pick off larger targets at range, while self-loading machineguns give it superb point defense capacity.
 ---
 import ShipManufacturingCost from '@components/ShipManufacturingCost.astro';
-import ShipWeapon from '@components/ShipWeapon.astro';
+import ShipWeaponList from '@components/ShipWeaponList.astro';
 
 > *{frontmatter.description}*
 
 ## Armaments
 
-* Fixed
-    * 2x <ShipWeapon weaponID="BaseWeaponTurretLancer" />
-    * 1x <ShipWeapon weaponID="BaseWeaponTurretBattlemortar" />
-* Turret
-    * 2x <ShipWeapon weaponID="BaseWeaponTurretGargoyle" />
-    * 6x <ShipWeapon weaponID="WeaponTurretPDT" />
+<ShipWeaponList ship={frontmatter.title} />
 
 ## Features
 

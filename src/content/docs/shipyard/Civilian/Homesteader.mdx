@@ -3,7 +3,7 @@ title: Homesteader
 description: A salvaged colonization solution by Ihijerka Civilian Manufacturing - at an affordable cost! The Homesteader is a compact multi-purpose shuttle designed for long-term deployment for data collection, mining, and courier work.
 ---
 import ShipManufacturingCost from '@components/ShipManufacturingCost.astro';
-import ShipWeapon from '@components/ShipWeapon.astro';
+import ShipWeaponList from '@components/ShipWeaponList.astro';
 
 
 > *{frontmatter.description}*
@@ -11,7 +11,7 @@ import ShipWeapon from '@components/ShipWeapon.astro';
 
 ## Armaments
 
-* N/A
+<ShipWeaponList ship={frontmatter.title} />
 
 
 ## Notes
