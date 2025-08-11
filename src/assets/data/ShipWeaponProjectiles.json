@@ -38,6 +38,9 @@
 "WeaponTurretPDT": {
     "projectile": "PDTBullet"
     },
+"WeaponTurretPDTNCSP": {
+    "projectile": "PDTBullet"
+    },
 "WeaponTurretVulcan": {
     "projectile": "BulletMachineGunVulcan"
     },
