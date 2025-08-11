@@ -47,9 +47,7 @@ function recursiveComponentSearch(entity: object, entityFile: object, componentT
 function getWeaponData(weapon: object) {
     const weaponFile = fixedWeapons.find((entry: { id: any; }) => entry.id == weapon.proto) ? fixedWeapons : turretWeapons;
 
-    // console.log(weapon);
     const projectileType = shipWeaponProjectiles[weapon.proto].projectile;
-    // console.log(projectileType);
     const projectileFile = shipgunCartridges.find((projectile: { id: string; }) => projectile.id == projectileType) ? shipgunCartridges
                      : shipgunAmmo.find((projectile: { id: string; }) => projectile.id == projectileType) ? shipgunAmmo 
                      : shipgunProjectiles.find((projectile: { id: string; }) => projectile.id == projectileType) ? shipgunProjectiles 
@@ -69,7 +67,9 @@ const shipHardpointList = [];
 const shipWeaponList = [];
 const shipWeaponFixedList: WeaponListing[] = [];
 const shipWeaponTurretList: WeaponListing[] = [];
+const shipWeaponUnknownList: WeaponListing[] = [];
 
+// build list of hardpoints
 for (const prototype of hardpoints) {
   const hardpointPrototype = shipFile.entities.find((entity: { proto: string; }) => entity.proto == prototype.id);
   if (hardpointPrototype) {
@@ -92,79 +92,40 @@ for (const prototype of turretWeapons) {
     }
 }
 
-for (const hardpoint of shipHardpointList) {
-    for (const hardpointEntity of hardpoint.entities) {
-        const hardpointPosition = hardpointEntity.components.find((component: { type: string; }) => component.type == 'Transform').pos;
-        for (const weapon of shipWeaponList) {
-            const weaponData = getWeaponData(weapon);
-            for (const weaponEntity of weapon.entities) {
-                const weaponPosition = weaponEntity.components.find((component: { type: string; }) => component.type == 'Transform').pos;
-                if (weaponPosition == hardpointPosition) {
-                    if (hardpoint.proto.includes('Fixed')) {
-                        if (shipWeaponFixedList.some(listItem => listItem.name == weaponData.name)) {
-                            shipWeaponFixedList[shipWeaponFixedList.findIndex(listItem => listItem.name == weaponData.name)].quantity += 1;
+for (const weaponPrototype of shipWeaponList) {
+        const weaponData = getWeaponData(weaponPrototype);
+        for (const weaponEntity of weaponPrototype.entities) {
+            const weaponPosition = weaponEntity.components.find((component: { type: string; }) => component.type == 'Transform').pos;
+            for (const hardpointPrototype of shipHardpointList) {
+                for (const hardpointEntity of hardpointPrototype.entities) {
+                    const hardpointPosition = hardpointEntity.components.find((component: { type: string; }) => component.type == 'Transform').pos;
+                    if (weaponPosition == hardpointPosition) {
+                        if (hardpointPrototype.proto.includes('Fixed')) {
+                            if (shipWeaponFixedList.some(listItem => listItem.name == weaponData.name)) {
+                                shipWeaponFixedList[shipWeaponFixedList.findIndex(listItem => listItem.name == weaponData.name)].quantity += 1;
+                            } else {
+                                shipWeaponFixedList.push(getWeaponData(weaponPrototype));
+                            }
                         } else {
-                            shipWeaponFixedList.push(getWeaponData(weapon));
-                        }
-                    } else {
-                        if (shipWeaponTurretList.some(listItem => listItem.name == weaponData.name)) {
-                            shipWeaponTurretList[shipWeaponTurretList.findIndex(listItem => listItem.name == weaponData.name)].quantity += 1;
-                        } else {
-                            shipWeaponTurretList.push(getWeaponData(weapon));
-                        }
+                            if (shipWeaponTurretList.some(listItem => listItem.name == weaponData.name)) {
+                                shipWeaponTurretList[shipWeaponTurretList.findIndex(listItem => listItem.name == weaponData.name)].quantity += 1;
+                            } else {
+                                shipWeaponTurretList.push(getWeaponData(weaponPrototype));
+                            }
                     }
                 }
             }
         }
+        // just in case a mapping error results in a weapon with no hardpoint
+        if (!shipWeaponFixedList.some(listItem => listItem.name == weaponData.name) && !shipWeaponTurretList.some(listItem => listItem.name == weaponData.name)) {
+            if (shipWeaponUnknownList.some(listItem => listItem.name == weaponData.name)) {
+                shipWeaponUnknownList[shipWeaponUnknownList.findIndex(listItem => listItem.name == weaponData.name)].quantity += 1;
+            } else {
+                shipWeaponUnknownList.push(getWeaponData(weaponPrototype));
+            }
+        }
     }
 }
-
-
-
-
-
-/*
-for (const prototype of fixedWeapons) {
-    const weaponPrototype = shipFile.entities.find((entity: { proto: string; }) => entity.proto == prototype.id);
-    if (weaponPrototype) {
-        // console.log(weaponPrototype);
-        const projectileType = shipWeaponProjectiles[weaponPrototype.proto].projectile;
-        const projectileFile = shipgunCartridges.find((projectile: { id: string; }) => projectile.id == projectileType) ? shipgunCartridges
-                     : shipgunAmmo.find((projectile: { id: string; }) => projectile.id == projectileType) ? shipgunAmmo 
-                     : shipgunProjectiles.find((projectile: { id: string; }) => projectile.id == projectileType) ? shipgunProjectiles 
-                     : basicProjectiles;
-        const projectileEntry = projectileFile.find((projectile: { id: string; }) => projectile.id == projectileType);
-        const projectileLifetime = recursiveComponentSearch(projectileEntry, projectileFile, "TimedDespawn").lifetime;
-
-        const weaponEntry = fixedWeapons.find((weapon: { id: string; }) => weapon.id == prototype.id);
-        const weaponSpeed = recursiveComponentSearch(weaponEntry, fixedWeapons, "Gun").projectileSpeed;
-        const weaponRange = weaponSpeed * projectileLifetime;
-        
-        shipWeaponFixedList.push(new WeaponListing(weaponEntry.name, weaponPrototype.entities.length, weaponRange));
-    }
-}
-
-for (const prototype of turretWeapons) {
-    const weaponPrototype = shipFile.entities.find((entity: { proto: string; }) => entity.proto == prototype.id);
-    if (weaponPrototype) {
-        // console.log(weaponPrototype);
-        const projectileType = shipWeaponProjectiles[weaponPrototype.proto].projectile;
-        const projectileFile = shipgunCartridges.find((projectile: { id: string; }) => projectile.id == projectileType) ? shipgunCartridges
-                     : shipgunAmmo.find((projectile: { id: string; }) => projectile.id == projectileType) ? shipgunAmmo 
-                     : shipgunProjectiles.find((projectile: { id: string; }) => projectile.id == projectileType) ? shipgunProjectiles 
-                     : basicProjectiles;
-        const projectileEntry = projectileFile.find((projectile: { id: string; }) => projectile.id == projectileType);
-        const projectileLifetime = recursiveComponentSearch(projectileEntry, projectileFile, "TimedDespawn").lifetime;
-
-        const weaponEntry = turretWeapons.find((weapon: { id: string; }) => weapon.id == prototype.id);
-        const weaponSpeed = recursiveComponentSearch(weaponEntry, turretWeapons, "Gun").projectileSpeed;
-        const weaponRange = weaponSpeed * projectileLifetime;
-        
-        // console.log(weaponPrototype.proto);
-        shipWeaponTurretList.push(new WeaponListing(weaponEntry.name, weaponPrototype.entities.length, weaponRange));
-    }
-}
-*/
 
 ---
 {(shipWeaponFixedList.length > 0) && <h3>Fixed Weapons</h3>
@@ -199,4 +160,21 @@ for (const prototype of turretWeapons) {
         )}
     </table>}
 
-{shipWeaponFixedList.length == 0 && shipWeaponTurretList.length == 0 && <p>N/A</p>}
+{(shipWeaponUnknownList.length > 0) && <h3>Unknown (Missing Hardpoint)</h3>
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Quantity</th>
+            <th>Range</th>
+        </tr>
+        {shipWeaponUnknownList.map((shipWeapon) => 
+        <tr>
+            <td>{shipWeapon.name}</td>
+            <td>{shipWeapon.quantity}</td>
+            <td>{shipWeapon.range}m</td>
+        </tr>
+        )}
+    </table>}
+
+
+{shipWeaponFixedList.length == 0 && shipWeaponTurretList.length == 0 && shipWeaponUnknownList.length == 0 && <p>N/A</p>}
