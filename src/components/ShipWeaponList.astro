@@ -13,6 +13,8 @@ const shipgunAmmo = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Shi
 const shipgunProjectiles = await fetchYAML('Resources/Prototypes/_Crescent/Entities/Shipguns/Bullets/projectiles.yml');
 const basicProjectiles = await fetchYAML('Resources/Prototypes/Entities/Objects/Weapons/Guns/Projectiles/projectiles.yml');
 
+const migrations = await fetchYAML('Resources/Migrations/tempCrescentMigration.yml');
+
 const shipFile = await fetchYAML(`Resources/Maps/_Crescent/Shuttles/${shipDirectory}/${ship.toLowerCase()}.yml`);
 
 // Manually defined in a JSON file because tracing back through various cartridges and magazines programmatically is nightmarish.
@@ -75,6 +77,27 @@ for (const prototype of hardpoints) {
   if (hardpointPrototype) {
     shipHardpointList.push(hardpointPrototype);
   }
+}
+
+// handle migrations, where certain map entities are automatically replaced with others
+// (due to the original entity no longer existing, but the map still using it)
+// shouldn't need to do this once maps are actually using the correct entities
+for (const key of Object.keys(migrations)) {
+    const migratedWeapon = shipFile.entities.find((entity: { proto: string; }) => entity.proto == key);
+    if (migratedWeapon) {
+        for (const prototype of fixedWeapons) {
+            if (prototype.id == migrations[migratedWeapon.proto]) {
+                migratedWeapon.proto = prototype.id;
+                shipWeaponList.push(migratedWeapon);
+            }
+        }
+        for (const prototype of turretWeapons) {
+            if (prototype.id == migrations[migratedWeapon.proto]) {
+                migratedWeapon.proto = prototype.id;
+                shipWeaponList.push(migratedWeapon);
+            }
+        }
+    }
 }
 
 // build list of weapons
